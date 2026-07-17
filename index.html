@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סוכן השקעות נדל״ן — אפיון (Blueprint)</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2a2f3a;
+    --txt:#e8ebf0; --muted:#9aa4b2; --accent:#4ade80; --accent2:#38bdf8;
+    --warn:#fbbf24; --danger:#f87171; --gold:#e0b34d;
+    --radius:14px; --font:"Segoe UI",Arial,"Assistant",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--font);line-height:1.7;font-size:16px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header.hero{background:linear-gradient(135deg,#151a2e,#0f1115 60%);border:1px solid var(--line);border-radius:var(--radius);padding:36px 32px;margin-bottom:28px}
+  .badge{display:inline-block;background:rgba(74,222,128,.12);color:var(--accent);border:1px solid rgba(74,222,128,.3);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
+  h1{margin:0 0 8px;font-size:30px;letter-spacing:-.3px}
+  h2{font-size:22px;margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  h3{font-size:17px;margin:22px 0 8px;color:var(--accent2)}
+  .lead{color:var(--muted);font-size:17px;max-width:820px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin:16px 0}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .stat .n{font-size:26px;font-weight:700;color:var(--accent)}
+  .stat .l{font-size:13px;color:var(--muted);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px}
+  th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:var(--accent2);font-weight:600;position:sticky;top:0}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  a{color:var(--accent2);text-decoration:none;border-bottom:1px dotted var(--accent2)}
+  a:hover{color:var(--accent)}
+  .step{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .num{flex:0 0 40px;height:40px;border-radius:50%;background:var(--accent2);color:#06121b;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:6px;margin:2px 3px 2px 0;font-weight:600}
+  .pill.g{background:rgba(74,222,128,.14);color:var(--accent)}
+  .pill.b{background:rgba(56,189,248,.14);color:var(--accent2)}
+  .pill.y{background:rgba(251,191,36,.14);color:var(--warn)}
+  .pill.r{background:rgba(248,113,113,.14);color:var(--danger)}
+  .note{border-right:3px solid var(--warn);background:rgba(251,191,36,.06);padding:12px 16px;border-radius:8px;font-size:14.5px;color:#f0e3c0;margin:12px 0}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+  .flow .box{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;font-weight:600}
+  .flow .arr{color:var(--accent);font-size:20px}
+  .mock{background:#fff;color:#1a1d24;border-radius:12px;padding:24px;margin-top:14px;direction:rtl}
+  .mock h4{margin:0 0 4px;color:#0f1115;font-size:20px}
+  .mock .sub{color:#5b6470;font-size:13px;margin-bottom:18px}
+  .mock table{font-size:13px}
+  .mock th{background:#f1f4f8;color:#1e5a86;position:static}
+  .mock td,.mock th{border-bottom:1px solid #e3e8ef;color:#1a1d24}
+  .mock .mstat{background:#f6f8fb;border:1px solid #e3e8ef;border-radius:10px;padding:12px;text-align:center}
+  .mock .mstat .n{font-size:22px;font-weight:700;color:#17914a}
+  .mock .mstat .l{font-size:12px;color:#5b6470}
+  .yes{color:var(--accent);font-weight:700}
+  .no{color:var(--danger);font-weight:700}
+  .part{color:var(--warn);font-weight:700}
+  .toc{columns:2;gap:24px;font-size:14.5px}
+  @media(max-width:820px){.toc{columns:1}}
+  .toc a{display:block;padding:4px 0;border:none}
+  footer{margin-top:50px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+  code{background:var(--panel2);padding:2px 7px;border-radius:5px;font-size:13px;color:var(--gold)}
+  .chartbox{position:relative;height:280px}
+  .bars{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+  .brow{display:grid;grid-template-columns:120px 1fr 46px;align-items:center;gap:10px;font-size:13px}
+  .btrack{background:var(--panel2);border-radius:6px;height:22px;overflow:hidden;display:flex}
+  .bfill{height:100%;display:flex;align-items:center}
+  .bval{font-weight:700;font-size:13px;text-align:left;color:var(--txt)}
+  .lbl{color:var(--muted);text-align:right}
+  .mock .btrack{background:#eef2f7}
+  .mock .lbl{color:#5b6470}
+  .mock .bval{color:#1a1d24}
+  .leg{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+  .leg span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="badge">אפיון סוכן · Blueprint v1.0</span>
+  <h1>סוכן השקעות נדל״ן — אתונה · לסבוס · קפריסין · תל אביב</h1>
+  <p class="lead">סוכן אוטומטי שמושך דאטה על דירות שנמכרו בשנה האחרונה מ‑4 שווקים, מנתח מחירים, מזהה הזדמנויות עם פוטנציאל תשואה כוללת מעל 10%, ומפיק דוח ויזואלי + כתוב — כאשר כל מחיר מגובה במקור פומבי מקושר.</p>
+</header>
+
+<div class="card">
+  <h3 style="margin-top:0">תוכן העניינים</h3>
+  <div class="toc">
+    <a href="#p1">1 · מטרת הסוכן ומה הוא מייצר</a>
+    <a href="#p2">2 · ארכיטקטורה — שרשרת העבודה</a>
+    <a href="#p3">3 · מקורות דאטה לכל אזור (עם קישורים)</a>
+    <a href="#p4">4 · מתודולוגיית ניתוח ותשואה</a>
+    <a href="#p5">5 · מנוע זיהוי ההזדמנויות (יעד 10%+)</a>
+    <a href="#p6">6 · פורמט הדוח — מוקאפ חי</a>
+    <a href="#p7">7 · תדירות, אוטומציה והתראות</a>
+    <a href="#p8">8 · מגבלות, ציות ואמינות מקורות</a>
+    <a href="#p9">9 · שכבת מיסוי, עלויות ורווח נטו</a>
+  </div>
+</div>
+
+<!-- 1 -->
+<h2 id="p1">1 · מטרת הסוכן ומה הוא מייצר</h2>
+<div class="grid g4">
+  <div class="stat"><div class="n">4</div><div class="l">שווקים במעקב</div></div>
+  <div class="stat"><div class="n">12ח׳</div><div class="l">חלון עסקאות אחורה</div></div>
+  <div class="stat"><div class="n">10%+</div><div class="l">יעד תשואה כוללת</div></div>
+  <div class="stat"><div class="n">100%</div><div class="l">מחירים עם מקור מקושר</div></div>
+</div>
+<div class="card">
+  <p>הסוכן פועל כאנליסט נדל״ן שלא ישן. בכל הרצה הוא: <strong>(א)</strong> אוסף עסקאות מכר שנסגרו ב‑12 החודשים האחרונים בכל אזור, <strong>(ב)</strong> מנקה ומאחד לפורמט אחיד (מחיר, מ״ר, מחיר למ״ר, שכונה, סוג נכס, תאריך, מקור), <strong>(ג)</strong> מחשב בנצ׳מרק מחיר‑למ״ר ותשואה לכל שכונה, <strong>(ד)</strong> מסמן נכסים שנמכרו מתחת לחציון האזורי או עם פוטנציאל תשואה כוללת מעל 10%, <strong>(ה)</strong> מפיק דוח ויזואלי אינטראקטיבי + סיכום כתוב עם המלצות מדורגות.</p>
+  <div class="note"><strong>עיקרון ברזל:</strong> כל שורת מחיר בדוח נושאת קישור למקור שבו העסקה פורסמה (מרשם עסקאות ממשלתי, מדד פורטל, או לשכת מקרקעין). אין מספר בלי מקור.</div>
+</div>
+
+<!-- 2 -->
+<h2 id="p2">2 · ארכיטקטורה — שרשרת העבודה</h2>
+<div class="card">
+  <div class="flow">
+    <span class="box">1 · Ingest<br><small style="color:var(--muted)">משיכת עסקאות</small></span><span class="arr">←</span>
+    <span class="box">2 · Normalize<br><small style="color:var(--muted)">ניקוי + איחוד</small></span><span class="arr">←</span>
+    <span class="box">3 · Enrich<br><small style="color:var(--muted)">שכ״ד + מדדים</small></span><span class="arr">←</span>
+    <span class="box">4 · Score<br><small style="color:var(--muted)">חישוב תשואה</small></span><span class="arr">←</span>
+    <span class="box">5 · Rank<br><small style="color:var(--muted)">דירוג הזדמנויות</small></span><span class="arr">←</span>
+    <span class="box">6 · Report<br><small style="color:var(--muted)">דוח + מקורות</small></span>
+  </div>
+  <div style="margin-top:18px">
+    <div class="step"><div class="num">1</div><div><strong>Ingest — משיכת דאטה.</strong> לכל אזור מקור/מקורות ייעודיים (טבלה בסעיף 3). ישראל: API/סקרייפ ממרשם עסקאות ממשלתי. יוון/קפריסין: פורטלים ומדדים רשמיים + לשכות מקרקעין. הסוכן שומר <code>raw_snapshot</code> עם חותמת זמן וקישור מקור לכל רשומה.</div></div>
+    <div class="step"><div class="num">2</div><div><strong>Normalize.</strong> המרת מטבעות (₪→€ לצורך השוואה), תקנון מ״ר, מיפוי שכונות, סינון עסקאות לא‑שוק (מתנות, בין קרובים, נכסים לא‑רלוונטיים). פלט: טבלה אחידה.</div></div>
+    <div class="step"><div class="num">3</div><div><strong>Enrich.</strong> הצמדת שכר דירה ממוצע לאותה שכונה/סוג נכס, שיעורי מס ועלויות רכישה, ומדד מגמת מחירים אזורי (עלייה/יציבות/ירידה).</div></div>
+    <div class="step"><div class="num">4</div><div><strong>Score.</strong> חישוב תשואת שכירות ברוטו ונטו, פוטנציאל השבחה, ותשואה כוללת צפויה (Total Return) — פירוט מלא בסעיף 4–5.</div></div>
+    <div class="step"><div class="num">5</div><div><strong>Rank.</strong> דירוג הנכסים לפי ציון הזדמנות, סימון אלה שחוצים את יעד 10% הכולל, וסינון רעשים.</div></div>
+    <div class="step"><div class="num">6</div><div><strong>Report.</strong> הפקת דוח HTML אינטראקטיבי (גרפים + טבלאות), סיכום כתוב בעברית, וקובץ נלווה עם כל המקורות המקושרים.</div></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<h2 id="p3">3 · מקורות דאטה לכל אזור</h2>
+<p class="lead" style="font-size:15px">זמינות מחירי מכר <em>ריאליים שנסגרו</em> שונה מהותית בין המדינות — זה השיקול הטכני המרכזי של הסוכן.</p>
+<div class="card" style="overflow-x:auto">
+<table>
+  <thead><tr><th>אזור</th><th>מקור ראשי (מחירי מכר)</th><th>עסקאות שנסגרו?</th><th>מקורות משלימים</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>תל אביב 🇮🇱</strong></td>
+      <td><a href="https://www.nadlan.gov.il/" target="_blank">מרשם עסקאות רשות המסים (nadlan.gov.il)</a></td>
+      <td><span class="yes">כן — מחיר אמיתי לכל עסקה</span><br><small style="color:var(--muted)">~1.64M עסקאות, 588 ערים</small></td>
+      <td>Madlan, Yad2, <a href="https://www.gov.il/en/service/real_estate_information" target="_blank">שירות המידע של רשות המסים</a></td>
+    </tr>
+    <tr>
+      <td><strong>קפריסין 🇨🇾</strong></td>
+      <td><a href="https://portal.dls.moi.gov.cy/en/stats_category/enimerosi/statistika/poliseon/" target="_blank">לשכת המקרקעין (DLS) — סטטיסטיקת מכר</a></td>
+      <td><span class="part">חלקי — נפחי מכר וחוזי מכר רשומים; מחיר פרטני מוגבל</span></td>
+      <td><a href="https://www.centralbank.cy/en/publications/residential-property-price-indices" target="_blank">בנק מרכזי — מדד מחירי דיור</a>, RICS Cyprus Index</td>
+    </tr>
+    <tr>
+      <td><strong>אתונה 🇬🇷</strong></td>
+      <td><a href="https://www.spitogatos.gr/en/property-index" target="_blank">מדד Spitogatos (פורטל #1 ביוון)</a></td>
+      <td><span class="no">לא — מחירי היצע/ביקוש, לא מרשם מכר פומבי</span></td>
+      <td><a href="https://www.globalpropertyguide.com/europe/greece/price-history" target="_blank">Global Property Guide</a>, בנק יוון (מדד), Κτηματολόγιο (טאבו)</td>
+    </tr>
+    <tr>
+      <td><strong>לסבוס 🇬🇷</strong></td>
+      <td><a href="https://www.spitogatos.gr/en/for_sale-homes/lesvos-mitilini" target="_blank">Spitogatos — מיטילנה/לסבוס</a></td>
+      <td><span class="no">לא — שוק דק, מחירי היצע בלבד</span></td>
+      <td>Spiti24, Aegean Home Rent, נתוני תפוסה תיירותית (Airbnb/Vrbo)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="note"><strong>המשמעות לאפיון:</strong> רק בישראל קיים מרשם מכר ממשלתי פתוח עם מחיר אמיתי לכל עסקה. ביוון וקפריסין הסוכן נשען על <em>מדדי פורטלים ומחירי היצע</em> + מדדים רשמיים, ולכן הוא מסמן כל מספר כ‑<span class="pill b">מחיר מכר מאומת</span> או <span class="pill y">מחיר היצע/הערכה</span>. שקיפות מקור = חלק מהתוצר, לא הערת שוליים.</div>
+
+<!-- 4 -->
+<h2 id="p4">4 · מתודולוגיית ניתוח ותשואה</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">נוסחאות הליבה</h3>
+    <p><strong>תשואת שכירות ברוטו</strong> = (שכ״ד שנתי ÷ מחיר רכישה) × 100</p>
+    <p><strong>תשואת שכירות נטו</strong> = ((שכ״ד שנתי − הוצאות תפעול − מס) ÷ (מחיר + עלויות רכישה)) × 100</p>
+    <p><strong>פוטנציאל השבחה</strong> = (חציון שכונתי − מחיר הנכס) ÷ מחיר הנכס — כמה הנכס "מתחת לשוק".</p>
+    <p><strong>תשואה כוללת (Total Return)</strong> = תשואת נטו + עליית ערך שנתית צפויה + השבחה חד‑פעמית מנורמלת.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">בנצ׳מרק שוק נוכחי (מקורות 2026)</h3>
+    <div class="bars">
+      <div class="brow"><span class="lbl">תל אביב</span><div class="btrack"><div class="bfill" style="width:32%;background:#f87171"></div></div><span class="bval">2.6%</span></div>
+      <div class="brow"><span class="lbl">אתונה (מרכז)</span><div class="btrack"><div class="bfill" style="width:68%;background:#38bdf8"></div></div><span class="bval">5.4%</span></div>
+      <div class="brow"><span class="lbl">אתונה (סטודיו)</span><div class="btrack"><div class="bfill" style="width:89%;background:#4ade80"></div></div><span class="bval">7.1%</span></div>
+      <div class="brow"><span class="lbl">קפריסין (ממוצע)</span><div class="btrack"><div class="bfill" style="width:68%;background:#38bdf8"></div></div><span class="bval">5.45%</span></div>
+      <div class="brow"><span class="lbl">לימסול</span><div class="btrack"><div class="bfill" style="width:75%;background:#4ade80"></div></div><span class="bval">6.0%</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:12px">תשואת שכירות ברוטו ממוצעת לפי שוק. מקור: Global Property Guide / Spitogatos / Investropa / Sands of Wealth (2026).</p>
+  </div>
+</div>
+<div class="note"><strong>מסקנה שהסוכן מטמיע:</strong> אף אחד מ‑4 השווקים לא מגיע ל‑10% מתשואת שכירות ארוכת‑טווח בלבד — ת״א ~2.6%, אתונה 4.5–7.2%, קפריסין ~5.5%. לכן יעד ה‑10% מושג רק דרך <strong>תשואה כוללת</strong>: שכירות + עליית ערך + השבחה, ובשווקים תיירותיים (לסבוס, חוף קפריסין, שכונות אתונה שאינן Golden Visa) גם דרך <span class="pill g">שכירות קצרת‑טווח</span> שמכפילה את התשואה הברוטו.</div>
+
+<!-- 5 -->
+<h2 id="p5">5 · מנוע זיהוי ההזדמנויות (יעד 10%+)</h2>
+<div class="card">
+  <h3 style="margin-top:0">שלבי הסינון</h3>
+  <div class="step"><div class="num">A</div><div><strong>מסנן "מתחת לשוק".</strong> נכס שנמכר ≥12% מתחת לחציון מחיר‑למ״ר בשכונתו (נתון זמין בעיקר בת״א מהמרשם) → דגל <span class="pill g">Value buy</span>.</div></div>
+  <div class="step"><div class="num">B</div><div><strong>מסנן תשואה.</strong> חישוב תשואת שכירות + תרחיש קצר‑טווח (היכן שמותר) והשוואה ליעד.</div></div>
+  <div class="step"><div class="num">C</div><div><strong>מסנן מגמה.</strong> רק שכונות ביציבות/עלייה — מסנן מלכודות ערך.</div></div>
+  <div class="step"><div class="num">D</div><div><strong>ציון הזדמנות משוקלל</strong> (0–100): 40% תשואה כוללת · 30% פער מהשוק · 20% מגמת אזור · 10% נזילות/ביקוש.</div></div>
+</div>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">אסטרטגיה מנצחת לכל שוק (איך מגיעים ל‑10%)</h3>
+    <table>
+      <thead><tr><th>שוק</th><th>המסלול ל‑10%+ כולל</th></tr></thead>
+      <tbody>
+        <tr><td><strong>אתונה</strong></td><td>סטודיו בקיפסלי/פאטיסיה (7%+ ברוטו) + עליית ערך 6–8% שנתי</td></tr>
+        <tr><td><strong>לסבוס</strong></td><td>נכס תיירותי קצר‑טווח (Airbnb) — כניסה נמוכה, תפוסה עונתית</td></tr>
+        <tr><td><strong>קפריסין</strong></td><td>לימסול 6% ברוטו / לרנקה כניסה זולה + צמיחת שכ״ד 3–6%</td></tr>
+        <tr><td><strong>תל אביב</strong></td><td>Value‑add: השבחה/פיצול/התחדשות (לא תשואת שכירות)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">פירוק תשואה כוללת לדוגמה</h3>
+    <div class="bars">
+      <div class="brow"><span class="lbl">אתונה קיפסלי</span><div class="btrack"><div class="bfill" style="width:40%;background:#4ade80"></div><div class="bfill" style="width:55%;background:#38bdf8"></div></div><span class="bval">11.4%</span></div>
+      <div class="brow"><span class="lbl">לימסול</span><div class="btrack"><div class="bfill" style="width:35%;background:#4ade80"></div><div class="bfill" style="width:42%;background:#38bdf8"></div><div class="bfill" style="width:13%;background:#e0b34d"></div></div><span class="bval">10.8%</span></div>
+      <div class="brow"><span class="lbl">ת״א (Value-add)</span><div class="btrack"><div class="bfill" style="width:17%;background:#4ade80"></div><div class="bfill" style="width:38%;background:#38bdf8"></div><div class="bfill" style="width:22%;background:#e0b34d"></div></div><span class="bval">9.1%</span></div>
+    </div>
+    <div class="leg"><span><span class="dot" style="background:#4ade80"></span>שכירות נטו</span><span><span class="dot" style="background:#38bdf8"></span>עליית ערך</span><span><span class="dot" style="background:#e0b34d"></span>השבחה</span></div>
+  </div>
+</div>
+
+<!-- 6 -->
+<h2 id="p6">6 · פורמט הדוח — מוקאפ חי</h2>
+<p class="lead" style="font-size:15px">כך ייראה הפלט בפועל בכל הרצה. הנתונים להלן הם המחשה בפורמט המדויק (מחירים אמיתיים ייכנסו בהרצה חיה).</p>
+
+<div class="mock">
+  <h4>דוח הזדמנויות נדל״ן · Q3 2026</h4>
+  <div class="sub">נסרקו 4 שווקים · חלון 12 חודשים · הופק אוטומטית ע״י הסוכן</div>
+
+  <div class="grid g4" style="margin-bottom:18px">
+    <div class="mstat"><div class="n">1,240</div><div class="l">עסקאות נסרקו</div></div>
+    <div class="mstat"><div class="n">37</div><div class="l">חצו סף 10%+</div></div>
+    <div class="mstat"><div class="n">6</div><div class="l">Top picks</div></div>
+    <div class="mstat"><div class="n">€142K</div><div class="l">כניסה חציונית</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>#</th><th>אזור / שכונה</th><th>מחיר</th><th>מ״ר</th><th>€/מ״ר</th><th>תשואה ברוטו</th><th>תשואה כוללת</th><th>ציון</th><th>מקור</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>אתונה · קיפסלי</td><td>€95,000</td><td>42</td><td>€2,262</td><td>7.1%</td><td><strong style="color:#17914a">11.4%</strong></td><td>91</td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
+      <tr><td>2</td><td>קפריסין · לימסול</td><td>€188,000</td><td>68</td><td>€2,765</td><td>6.0%</td><td><strong style="color:#17914a">10.8%</strong></td><td>87</td><td><span style="color:#1e5a86">DLS ↗</span></td></tr>
+      <tr><td>3</td><td>אתונה · פאטיסיה</td><td>€90,000</td><td>40</td><td>€2,250</td><td>6.9%</td><td><strong style="color:#17914a">10.5%</strong></td><td>85</td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
+      <tr><td>4</td><td>לסבוס · מיטילנה</td><td>€78,000</td><td>78</td><td>€1,000</td><td>8.4%*</td><td><strong style="color:#17914a">10.2%</strong></td><td>80</td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
+      <tr><td>5</td><td>קפריסין · לרנקה</td><td>€135,000</td><td>60</td><td>€2,250</td><td>5.4%</td><td><strong style="color:#b8860b">9.8%</strong></td><td>74</td><td><span style="color:#1e5a86">DLS ↗</span></td></tr>
+      <tr><td>6</td><td>ת״א · פלורנטין</td><td>₪2.35M</td><td>48</td><td>₪48,958</td><td>2.9%</td><td><strong style="color:#b8860b">9.1%†</strong></td><td>68</td><td><span style="color:#1e5a86">nadlan.gov.il ↗</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:#5b6470;margin-top:8px">* לסבוס: תשואה משכירות קצרת‑טווח עונתית. † ת״א: התשואה הכוללת מגיעה מ‑Value‑add/עליית ערך, לא משכירות. כל מחיר מקושר לעסקה/מקור המקורי.</p>
+
+  <div class="grid g2" style="margin-top:20px">
+    <div>
+      <strong style="font-size:14px;color:#1a1d24">מחיר למ״ר לפי הזדמנות</strong>
+      <div class="bars" style="margin-top:10px">
+        <div class="brow"><span class="lbl">קיפסלי</span><div class="btrack"><div class="bfill" style="width:82%;background:#1e5a86"></div></div><span class="bval">€2,262</span></div>
+        <div class="brow"><span class="lbl">פאטיסיה</span><div class="btrack"><div class="bfill" style="width:81%;background:#1e5a86"></div></div><span class="bval">€2,250</span></div>
+        <div class="brow"><span class="lbl">לרנקה</span><div class="btrack"><div class="bfill" style="width:81%;background:#1e5a86"></div></div><span class="bval">€2,250</span></div>
+        <div class="brow"><span class="lbl">לימסול</span><div class="btrack"><div class="bfill" style="width:100%;background:#1e5a86"></div></div><span class="bval">€2,765</span></div>
+        <div class="brow"><span class="lbl">מיטילנה</span><div class="btrack"><div class="bfill" style="width:36%;background:#1e5a86"></div></div><span class="bval">€1,000</span></div>
+      </div>
+    </div>
+    <div>
+      <strong style="font-size:14px;color:#1a1d24">תשואה ברוטו מול תשואה כוללת</strong>
+      <svg viewBox="0 0 300 190" style="width:100%;height:auto;margin-top:8px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="10" x2="30" y2="170" stroke="#c9d2de" stroke-width="1"/>
+        <line x1="30" y1="170" x2="290" y2="170" stroke="#c9d2de" stroke-width="1"/>
+        <line x1="30" y1="120" x2="290" y2="120" stroke="#17914a" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="288" y="116" font-size="9" fill="#17914a" text-anchor="end">סף 10% כולל</text>
+        <circle cx="219" cy="50" r="6" fill="#17914a"/>
+        <circle cx="179" cy="80" r="6" fill="#17914a"/>
+        <circle cx="212" cy="95" r="6" fill="#17914a"/>
+        <circle cx="268" cy="110" r="6" fill="#17914a"/>
+        <circle cx="156" cy="130" r="6" fill="#b8860b"/>
+        <circle cx="63" cy="165" r="6" fill="#b8860b"/>
+        <text x="160" y="185" font-size="9" fill="#5b6470" text-anchor="middle">תשואה ברוטו %  ←</text>
+        <text x="12" y="90" font-size="9" fill="#5b6470" text-anchor="middle" transform="rotate(-90 12 90)">כוללת %</text>
+      </svg>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;border-top:1px solid #e3e8ef;padding-top:14px">
+    <strong style="color:#0f1115">סיכום כתוב (תמצית):</strong>
+    <p style="font-size:13.5px;color:#3a4250">ההזדמנויות החזקות ברבעון מרוכזות באתונה — סטודיו קטן בקיפסלי ופאטיסיה מציע את שילוב התשואה‑פלוס‑צמיחה הטוב ביותר, עם כניסה מתחת ל‑€100K. לימסול בקפריסין בולטת כאלטרנטיבה יציבה עם 6% ברוטו וביקוש שכירות חזק. לסבוס רלוונטית רק במסלול קצר‑טווח תיירותי. תל אביב אינה מייצרת תשואת שכירות (2.6–2.9%) והיא רלוונטית אך ורק כעסקת השבחה/ערך. יעד 10% מושג ב‑4 מתוך 6 המובילים על בסיס תשואה כוללת.</p>
+  </div>
+</div>
+
+<!-- 7 -->
+<h2 id="p7">7 · תדירות, אוטומציה והתראות</h2>
+<div class="grid g3">
+  <div class="card"><h3 style="margin-top:0">קצב הרצה</h3><p>ריצה מלאה <span class="pill b">רבעונית</span> לדוח עומק, וסריקה <span class="pill g">שבועית</span> להתראות "נכס חדש מתחת לשוק". ניתן להגדיר כמשימה מתוזמנת אוטומטית.</p></div>
+  <div class="card"><h3 style="margin-top:0">התראות</h3><p>מייל/הודעה כשנכס חוצה סף ציון 85+ או כשמופיעה עסקה חריגה מתחת לחציון בשכונת יעד.</p></div>
+  <div class="card"><h3 style="margin-top:0">פורמטים</h3><p>דוח <span class="pill b">HTML אינטראקטיבי</span> (ברירת מחדל) + ייצוא ל‑PDF/Excel לפי דרישה. כל הרצה נשמרת עם חותמת זמן.</p></div>
+</div>
+
+<!-- 8 -->
+<h2 id="p8">8 · מגבלות, ציות ואמינות מקורות</h2>
+<div class="card">
+  <p><span class="pill y">זמינות דאטה</span> רק ישראל מספקת מרשם מכר ממשלתי פתוח עם מחיר פרטני. ביוון/קפריסין הבסיס הוא מחירי היצע ומדדים — הסוכן מסמן זאת מפורשות בכל שורה.</p>
+  <p><span class="pill r">Golden Visa יוון</span> נכס שנרכש במסלול Golden Visa <strong>אסור</strong> להשכרה קצרת‑טווח (Airbnb) — מה שמוריד תשואה. הסוכן מפריד בין נכסי‑ויזה לנכסי‑תשואה.</p>
+  <p><span class="pill y">מס 2026</span> רפורמת מס שכירות ביוון (החל 1.1.2026) מקטינה תשואה נטו — מוטמע בחישוב.</p>
+  <p><span class="pill r">תנאי משפטי</span> הסוכן מפיק ניתוח מידע, לא ייעוץ השקעות. כל עסקה מחייבת בדיקת נאותות עצמאית, עו״ד מקומי ושמאי. תשואות "כוללות" כוללות הנחות עליית‑ערך שאינן מובטחות.</p>
+</div>
+
+<!-- 9 -->
+<h2 id="p9">9 · שכבת מיסוי, עלויות ורווח נטו</h2>
+<p class="lead" style="font-size:15px">כאן הסוכן מפריד בין "תשואה ברוטו יפה" ל"מה באמת נכנס לכיס". כל תרחיש מחושב אחרי מיסים, עלויות רכישה, שיפוץ, ודמי ניהול.</p>
+
+<div class="card" style="overflow-x:auto">
+<h3 style="margin-top:0">מפת מיסים ועלויות לפי שוק (2026)</h3>
+<table>
+  <thead><tr><th>רכיב</th><th>🇮🇱 תל אביב</th><th>🇬🇷 אתונה / לסבוס</th><th>🇨🇾 קפריסין</th></tr></thead>
+  <tbody>
+    <tr><td><strong>מס רכישה</strong></td><td class="part">8% שטוח (משקיע/דירה שנייה)</td><td>מס העברה 3.09% (יד2)<br><small style="color:var(--muted)">מע״מ 24% מושהה על חדש</small></td><td>אגרות העברה (בהנחת 50%)<br><small style="color:var(--muted)">מע״מ 19% על חדש / 5% מגורים</small></td></tr>
+    <tr><td><strong>עלויות רכישה</strong></td><td>עו״ד ~0.5–1% + תיווך ~2%+מע״מ</td><td>נוטריון 1–2% · עו״ד ~1% · רישום 0.5% · תיווך ~2%</td><td>עו״ד ~1% + אגרות</td></tr>
+    <tr><td><strong>מס על שכ״ד</strong></td><td class="yes">10% שטוח על הברוטו<br><small style="color:var(--muted)">פטור עד ~₪5,654/ח׳</small></td><td class="part">מדורג: 15% עד €12K · 25% · 35% · 45%</td><td>מדורג 0–35% · GeSY 2.65%<br><small style="color:var(--muted)">SDC 3% בוטל 1.1.26</small></td></tr>
+    <tr><td><strong>מס שבח (מכירה)</strong></td><td>25% על הרווח הריאלי (צמוד מדד)</td><td class="yes">מושהה/פטור בפועל לרוב</td><td>20% על הרווח<br><small style="color:var(--muted)">פטור כללי הועלה ל‑€30K</small></td></tr>
+    <tr><td><strong>מס שנתי</strong></td><td>ארנונה (בד״כ על השוכר)</td><td>ENFIA ~€400–900/שנה (נכס €250K)</td><td>אין מס נכס שנתי</td></tr>
+    <tr><td><strong>Airbnb / קצר‑טווח</strong></td><td>מותר, ממוסה כעסק/שכ״ד</td><td class="r">חובה רישום AADE · <strong>אסור בנכס Golden Visa</strong></td><td class="yes">מותר · שוק תיירותי חזק בחוף</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">עלויות תפעול שהסוכן מפחית מהברוטו</h3>
+    <p><span class="pill y">שיפוץ / תיקונית</span> אומדן חד‑פעמי לפי מצב הנכס (Value‑add) + רזרבה שנתית ~1% מהשווי לתחזוקה.</p>
+    <p><span class="pill b">חברת ניהול</span> שכירות ארוכה ~8–12% מהשכ״ד (או חודש שכירות/שנה); ניהול קצר‑טווח (Airbnb) ~15–25% מההכנסה.</p>
+    <p><span class="pill r">שכירות עונתית</span> ניכוי שיעור תפוסה ריאלי (לסבוס/חוף — עונתי, לא 100%).</p>
+    <p><span class="pill g">עלויות רכישה</span> מתווספות לבסיס העלות ומקטינות את מס השבח העתידי.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">מפל רווח נטו — דוגמה (אתונה, סטודיו €95K)</h3>
+    <div class="bars">
+      <div class="brow"><span class="lbl">ברוטו</span><div class="btrack"><div class="bfill" style="width:100%;background:#4ade80"></div></div><span class="bval">7.1%</span></div>
+      <div class="brow"><span class="lbl">− מס שכ״ד</span><div class="btrack"><div class="bfill" style="width:15%;background:#f87171"></div></div><span class="bval">−1.1</span></div>
+      <div class="brow"><span class="lbl">− דמי ניהול</span><div class="btrack"><div class="bfill" style="width:10%;background:#f87171"></div></div><span class="bval">−0.7</span></div>
+      <div class="brow"><span class="lbl">− תחזוקה</span><div class="btrack"><div class="bfill" style="width:7%;background:#f87171"></div></div><span class="bval">−0.5</span></div>
+      <div class="brow"><span class="lbl">= נטו</span><div class="btrack"><div class="bfill" style="width:68%;background:#38bdf8"></div></div><span class="bval">4.8%</span></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:10px">מברוטו 7.1% → אחרי מס שכ״ד, ניהול, ותחזוקה → נטו ~4.8%. עליית הערך והשבחה משלימות ל‑10%+ כולל.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">אופציות אסטרטגיית רווח שהסוכן מדרג</h3>
+  <table>
+    <thead><tr><th>אסטרטגיה</th><th>איך מרוויחים</th><th>מתאים ל‑</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Buy‑to‑Rent (LTR)</strong></td><td>תשואת שכירות שוטפת + עליית ערך</td><td>אתונה, קפריסין (לימסול/לרנקה)</td></tr>
+      <tr><td><strong>קצר‑טווח / Airbnb</strong></td><td>הכנסה עונתית גבוהה פי 1.5–2 מ‑LTR</td><td>לסבוס, חוף קפריסין, שכונות אתונה (לא Golden Visa)</td></tr>
+      <tr><td><strong>Value‑add / BRRR</strong></td><td>קנייה מתחת לשוק → שיפוץ → השבחה → השכרה/מימון מחדש</td><td>ת״א (פלורנטין/דרום), אתונה ישנה</td></tr>
+      <tr><td><strong>פיצול / חלוקה</strong></td><td>הפיכת יחידה אחת לשתיים → הכפלת שכ״ד</td><td>ת״א, נכסים גדולים בקפריסין</td></tr>
+      <tr><td><strong>Buy & Appreciate</strong></td><td>החזקה ארוכה לרווח הון (מס שבח מושהה ביוון)</td><td>Golden Visa יוון, מרכז אתונה</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  אפיון סוכן השקעות נדל״ן · גרסה 1.0 · הופק ב‑17 ביולי 2026. הנתונים המספריים בבנצ׳מרק מבוססים על מקורות פומביים משנת 2026 (רשות המסים ישראל · DLS קפריסין · Spitogatos · Global Property Guide · Investropa · Sands of Wealth). המספרים במוקאפ הם להמחשת פורמט בלבד.
+</footer>
+
+</div>
+
+</body>
+</html>
