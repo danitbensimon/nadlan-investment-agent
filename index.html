@@ -107,6 +107,16 @@
   <p class="lead">סוכן אוטומטי שמושך דאטה על דירות שנמכרו בשנה האחרונה מ‑4 שווקים, מנתח מחירים, מזהה הזדמנויות עם פוטנציאל תשואה כוללת מעל 10%, ומפיק דוח ויזואלי + כתוב — כאשר כל מחיר מגובה במקור פומבי מקושר.</p>
 </header>
 
+<div class="card" style="border-color:var(--accent)">
+  <h3 style="margin-top:0">🔍 סימון מקור לכל מספר בדוח</h3>
+  <p style="color:var(--muted);font-size:15px;margin-top:0">לא כל מספר נולד שווה. כל נתון בדוח מסומן לפי מידת האמינות שלו:</p>
+  <p><span class="pill g">מדוד</span> נמשך ממודעה אמיתית או ממקור רשמי. ניתן לאמת בקישור. <strong>זו רוב הדוח.</strong></p>
+  <p><span class="pill b">מחושב</span> נגזר ממספרים מדודים לפי נוסחה גלויה (למשל תשואה = שכ״ד ÷ מחיר). הנוסחה מוצגת בשורה הנפתחת.</p>
+  <p><span class="pill y">מוערך</span> אין נתון ישיר; הערכה מבוססת שוק דומה. למשל מחיר ללילה בלסבוס, שנגזר מתפוסת איים יוונים כלליים.</p>
+  <p><span class="pill r">הנחה</span> תרחיש עתידי שאינו ניתן למדידה. בעיקר <strong>שיעורי עליית ערך</strong> — כל מספר "תשואה כוללת" מכיל הנחה כזו.</p>
+  <div class="note" style="margin-bottom:0"><strong>הכלל החשוב ביותר:</strong> כל מספר של <strong>תשואה כוללת</strong> בדוח מכיל הנחת עליית ערך של 6–8% לשנה, שנגזרה מביצועי העבר. עליית ערך אינה ניתנת לחיזוי. בתרחיש של עליית ערך אפס — כל התשואות הכוללות בדוח יורדות לרמת התשואה הנטו בלבד, כלומר בין 2% ל‑6%. <strong>אל תקבלי החלטה על סמך מספר שמסומן כהנחה.</strong></div>
+</div>
+
 <div class="card">
   <h3 style="margin-top:0">תוכן העניינים</h3>
   <div class="toc">
@@ -119,6 +129,10 @@
     <a href="#p7">7 · תדירות, אוטומציה והתראות</a>
     <a href="#p8">8 · מגבלות, ציות ואמינות מקורות</a>
     <a href="#p9">9 · שכבת מיסוי, עלויות ורווח נטו</a>
+    <a href="#p10">10 · חציונים שכונתיים + הנחת מחיר</a>
+    <a href="#p11">11 · מימון ומינוף</a>
+    <a href="#p12">12 · סיכון מטבע</a>
+    <a href="#p13">13 · מגמות אמיתיות 12 חודשים</a>
   </div>
 </div>
 
@@ -242,7 +256,8 @@
 </div>
 <div class="grid g2">
   <div class="card">
-    <h3 style="margin-top:0">אסטרטגיה מנצחת לכל שוק (איך מגיעים ל‑10%)</h3>
+    <h3 style="margin-top:0">אסטרטגיה מנצחת לכל שוק <span class="pill r">מכיל הנחה</span></h3>
+    <p style="font-size:13px;color:var(--warn);margin:0 0 8px">התשואות הברוטו <span class="pill g">מדודות</span>. שיעורי עליית הערך <span class="pill r">הנחה</span> מביצועי עבר.</p>
     <table>
       <thead><tr><th>שוק</th><th>המסלול ל‑10%+ כולל</th></tr></thead>
       <tbody>
@@ -254,7 +269,8 @@
     </table>
   </div>
   <div class="card">
-    <h3 style="margin-top:0">פירוק תשואה כוללת לדוגמה</h3>
+    <h3 style="margin-top:0">פירוק תשואה כוללת <span class="pill r">מכיל הנחה</span></h3>
+    <p style="font-size:13px;color:var(--warn);margin:0 0 8px">רכיב "שכירות נטו" מדוד. רכיבי "עליית ערך" ו"השבחה" הם <strong>הנחות</strong> — הם מה שהופך 4.8% ל‑11.4%. בלעדיהם נשארת רק העמודה הירוקה.</p>
     <div class="bars">
       <div class="brow"><span class="lbl">אתונה קיפסלי</span><div class="btrack"><div class="bfill" style="width:40%;background:#4ade80"></div><div class="bfill" style="width:55%;background:#38bdf8"></div></div><span class="bval">11.4%</span></div>
       <div class="brow"><span class="lbl">לימסול</span><div class="btrack"><div class="bfill" style="width:35%;background:#4ade80"></div><div class="bfill" style="width:42%;background:#38bdf8"></div><div class="bfill" style="width:13%;background:#e0b34d"></div></div><span class="bval">10.8%</span></div>
@@ -269,14 +285,14 @@
 <p class="lead" style="font-size:15px">כך ייראה הפלט בפועל בכל הרצה. הנתונים להלן הם המחשה בפורמט המדויק (מחירים אמיתיים ייכנסו בהרצה חיה).</p>
 
 <div class="mock">
-  <h4>דוח הזדמנויות נדל״ן · Q3 2026</h4>
-  <div class="sub">נסרקו 4 שווקים · חלון 12 חודשים · הופק אוטומטית ע״י הסוכן</div>
+  <h4>דוח הזדמנויות נדל״ן · יולי 2026</h4>
+  <div class="sub">4 שווקים · מודעות אמיתיות מ‑Spitogatos, Bazaraki ומדלן · נמשך 18.7.2026</div>
 
   <div class="grid g4" style="margin-bottom:18px">
-    <div class="mstat"><div class="n">1,240</div><div class="l">עסקאות נסרקו</div></div>
-    <div class="mstat"><div class="n">37</div><div class="l">חצו סף 10%+</div></div>
-    <div class="mstat"><div class="n">6</div><div class="l">Top picks</div></div>
-    <div class="mstat"><div class="n">€142K</div><div class="l">כניסה חציונית</div></div>
+    <div class="mstat"><div class="n">775</div><div class="l">מודעות אמיתיות נותחו</div></div>
+    <div class="mstat"><div class="n">6</div><div class="l">שכונות עם חציון מחושב</div></div>
+    <div class="mstat"><div class="n">13</div><div class="l">נכסים בניתוח מפורט</div></div>
+    <div class="mstat"><div class="n">€95K</div><div class="l">כניסה חציונית לעסקת תשואה</div></div>
   </div>
 
   <table>
@@ -319,7 +335,8 @@
 
   <div style="margin-top:20px;border-top:1px solid #e3e8ef;padding-top:14px">
     <strong style="color:#0f1115">סיכום כתוב (תמצית):</strong>
-    <p style="font-size:13.5px;color:#3a4250">ההזדמנויות החזקות ברבעון מרוכזות באתונה — סטודיו קטן בקיפסלי ופאטיסיה מציע את שילוב התשואה‑פלוס‑צמיחה הטוב ביותר, עם כניסה מתחת ל‑€100K. לימסול בקפריסין בולטת כאלטרנטיבה יציבה עם 6% ברוטו וביקוש שכירות חזק. לסבוס רלוונטית רק במסלול קצר‑טווח תיירותי. תל אביב אינה מייצרת תשואת שכירות (2.6–2.9%) והיא רלוונטית אך ורק כעסקת השבחה/ערך. יעד 10% מושג ב‑4 מתוך 6 המובילים על בסיס תשואה כוללת.</p>
+    <p style="font-size:13.5px;color:#3a4250">ההזדמנויות החזקות מרוכזות באתונה. קיפסלי נמדדה ב‑10.67% תשואה ברוטו על בסיס 12 מודעות מכר ו‑10 מודעות השכרה, עם כניסה מתחת ל‑€100K — הגבוהה מכל ארבעת השווקים. פלטיה אטיקיס 7.94%. לימסול נותנת כ‑6% ברוטו עם ביקוש שכירות יציב. לסבוס רלוונטית רק במסלול קצר‑טווח, וסובלת מסיכון נזילות משמעותי. תל אביב נמדדה ב‑2.97% ברוטו בפלורנטין — הנמוכה מכולן, ורלוונטית אך ורק כעסקת השבחה או עליית ערך.</p>
+    <p style="font-size:12.5px;color:#8a4a00;background:#fff6e5;padding:8px 12px;border-radius:6px"><strong>הסתייגות:</strong> כל המחירים הם <strong>מחירים מבוקשים</strong>, לא עסקאות שנסגרו. החישובים כוללים הנחה של 10% (יוון וקפריסין) או 5% (ישראל). מדגמי השכונות הם 10–45 מודעות — מספיק לכיוון, לא להחלטת רכישה.</p>
   </div>
 </div>
 
@@ -530,10 +547,10 @@
   <table>
     <thead><tr><th>שוק</th><th>מחיר ללילה (ממוצע)</th><th>תפוסה שנתית</th><th>הכנסה שנתית ברוטו</th><th>מי מנצח</th></tr></thead>
     <tbody>
-      <tr><td><strong>אתונה</strong></td><td>~$127 · קיפסלי €60–80 · פאטיסיה €55–75</td><td class="part">42.7%</td><td>~$16,100</td><td class="yes">Airbnb (על נכס זול)</td></tr>
-      <tr><td><strong>לסבוס / איים</strong></td><td>עונתי גבוה</td><td class="part">~53% — מרוכז ב‑4–5 חודשים</td><td>תלוי עונה</td><td class="yes">Airbnb בבירור</td></tr>
-      <tr><td><strong>לימסול</strong></td><td>~$127 · חציון $101</td><td class="r">43.2% — נמוך</td><td>~$15,900</td><td class="b">שכירות ארוכה</td></tr>
-      <tr><td><strong>תל אביב</strong></td><td>גבוה</td><td>משתנה · רגולציה עירונית</td><td>—</td><td class="b">שכירות ארוכה</td></tr>
+      <tr><td><strong>אתונה</strong> <span class="pill g">מדוד</span></td><td>~$127 · קיפסלי €60–80</td><td class="part">42.7%</td><td>~$16,100</td><td class="yes">Airbnb (על נכס זול)</td></tr>
+      <tr><td><strong>לסבוס</strong> <span class="pill y">מוערך</span></td><td>אין נתון ספציפי לאי</td><td class="part">~53% (איים יווניים)</td><td>מרוכז ב‑4–5 חודשים</td><td class="yes">Airbnb בבירור</td></tr>
+      <tr><td><strong>לימסול</strong> <span class="pill g">מדוד</span></td><td>~$127 · חציון $101</td><td class="r">43.2% — נמוך</td><td>~$15,900</td><td class="b">שכירות ארוכה</td></tr>
+      <tr><td><strong>תל אביב</strong> <span class="pill y">מוערך</span></td><td>לא נמדד בדוח זה</td><td>רגולציה עירונית</td><td>—</td><td class="b">שכירות ארוכה</td></tr>
     </tbody>
   </table>
   <div class="note"><strong>התובנה המרכזית:</strong> תפוסה — לא מחיר הלילה — מכריעה. לימסול ואתונה בעלות מחיר לילה כמעט זהה (~$127), אבל בעיר תיירותית עם ביקוש רחב זה עובד, ובעיר עסקים לא. באיים המחיר ללילה גבוה מאוד אבל ההכנסה דחוסה ל‑4–5 חודשים — צריך לתמחר את זה, לא להכפיל ב‑12.</div>
@@ -661,6 +678,70 @@
     </div>
   </div>
   <div class="note"><strong>מסקנה:</strong> מינוף באירו הוא לא רק כלי תשואה — הוא כלי <strong>הגנה מטבעית</strong>. ככל שיותר מהעסקה ממומן באירו ומוחזר משכירות באירו, כך החשיפה השקלית קטנה.</div>
+</div>
+
+<!-- 13 -->
+<h2 id="p13">13 · מגמות אמיתיות — 12 חודשים אחרונים <span class="pill g">מדוד</span></h2>
+<p class="lead" style="font-size:15px">עד כאן עליית הערך בדוח הייתה <strong>הנחה</strong>. כאן היא הופכת למדידה. אלה שיעורי הצמיחה שנרשמו בפועל, ממקורות רשמיים.</p>
+
+<div class="card" style="overflow-x:auto">
+  <table>
+    <thead><tr><th>שוק</th><th>עליית מחירים בפועל</th><th>צמיחת שכר דירה</th><th>ביקוש ונזילות</th><th>כיוון</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>אתונה 🇬🇷</strong></td>
+        <td><strong>+5.2%</strong> ברבעון 1/2026<br><small style="color:var(--muted)">מרכז אתונה מבוקש +8.46%</small></td>
+        <td><strong>+6.9%</strong> מרכז אתונה<br><small style="color:var(--muted)">ארצי +7.7% (מדד CPI)</small></td>
+        <td class="yes">9,000+ עסקאות ברבעון · 40% זרים · <strong>58 יום בשוק</strong> (ירד ב‑15 יום)</td>
+        <td class="part">מאט — 2025 היה +6.5%</td>
+      </tr>
+      <tr>
+        <td><strong>קפריסין 🇨🇾</strong></td>
+        <td><strong>+3.4%</strong> מדד כללי<br><small style="color:var(--accent)">דירות בנפרד: <strong>+10.8%</strong> · בתים +3.0%</small></td>
+        <td>צמיחה מתונה</td>
+        <td class="yes">2025 שיא של 17 שנה · €4.7 מיליארד · פברואר 2026: 1,537 עסקאות, <strong>+12%</strong></td>
+        <td class="part">מאט — קצב איטי יותר ברבעון 1</td>
+      </tr>
+      <tr>
+        <td><strong>תל אביב 🇮🇱</strong></td>
+        <td class="part"><strong>+2%</strong> נומינלי<br><small style="color:var(--danger)">כלומר <strong>אפס ריאלי</strong> אחרי אינפלציה</small></td>
+        <td><strong>+3.5%</strong> ארצי<br><small style="color:var(--muted)">ת״א ₪7,351 ממוצע, +3.2%</small></td>
+        <td class="r">השוק התקרר ב‑2025 · עסקאות האטו · יזמים מציעים תמריצים</td>
+        <td class="r">חלש</td>
+      </tr>
+      <tr>
+        <td><strong>לסבוס 🇬🇷</strong></td>
+        <td colspan="3" class="part">אין נתון ספציפי לאי <span class="pill y">מוערך</span> — שוק דק מדי למדד נפרד. ההנחה היא שהוא מפגר אחרי הממוצע היווני.</td>
+        <td class="part">לא ידוע</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">מה הנתונים משנים בדוח</h3>
+    <p><span class="pill g">מאושש</span> ההנחה של 6–8% עליית ערך באתונה הייתה <strong>סבירה</strong>. הנתון בפועל הוא 5.2% למדד ו‑8.46% למחירי מבוקש במרכז.</p>
+    <p><span class="pill g">מאושש</span> התזה על העסקה שלך בזאקאקי מקבלת חיזוק: <strong>דירות</strong> בקפריסין עלו 10.8%, לא 3.4% — והמדד הכללי מוטה כלפי מטה בגלל בתים פרטיים שעלו רק 3%.</p>
+    <p><span class="pill r">מפריך</span> תל אביב עלתה 2% נומינלי בלבד, כלומר <strong>אפס ריאלי</strong>. ההנחה של 4.5% עליית ערך שהופיעה בדוח עבור ת״א — לא מבוססת. תשואת ה‑9.1% הכוללת שהופיעה בגרסאות קודמות אינה מוצדקת.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">האזהרה החשובה — הכל מאט</h3>
+    <p>שלושת השווקים המדודים <strong>מאטים בו זמנית</strong>. אתונה ירדה מ‑6.5% ל‑5.2%. שכר הדירה ביוון ירד משיא של 11.4% ביוני 2025 ל‑7.7%. קפריסין מתוארת כ"עלייה בקצב איטי יותר". תל אביב כבר בעצירה.</p>
+    <div class="note" style="margin-bottom:0"><strong>המשמעות להשקעה:</strong> להשליך את שיעורי הצמיחה של 2025 קדימה זו טעות. הסוכן צריך להשתמש בקצב <strong>הנוכחי</strong> ולא בשיא, ולהריץ תמיד תרחיש של עליית ערך אפס.</p></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">תרחיש עליית ערך אפס — מה נשאר מהתשואה</h3>
+  <div class="bars">
+    <div class="brow"><span class="lbl">קיפסלי (Airbnb)</span><div class="btrack"><div class="bfill" style="width:57%;background:#4ade80"></div></div><span class="bval">6.5%</span></div>
+    <div class="brow"><span class="lbl">פלטיה אטיקיס</span><div class="btrack"><div class="bfill" style="width:60%;background:#4ade80"></div></div><span class="bval">6.8%</span></div>
+    <div class="brow"><span class="lbl">לימסול פנטהאוז</span><div class="btrack"><div class="bfill" style="width:54%;background:#38bdf8"></div></div><span class="bval">6.1%</span></div>
+    <div class="brow"><span class="lbl">זאקאקי (שלך)</span><div class="btrack"><div class="bfill" style="width:33%;background:#e0b34d"></div></div><span class="bval">3.8%</span></div>
+    <div class="brow"><span class="lbl">ת״א פלורנטין</span><div class="btrack"><div class="bfill" style="width:26%;background:#f87171"></div></div><span class="bval">3.0%</span></div>
+  </div>
+  <div class="note" style="margin-bottom:0"><strong>זו התמונה בלי הנחות.</strong> אף נכס לא מגיע ל‑10% מתשואה שוטפת בלבד. יעד 10% תלוי לחלוטין בעליית ערך או במינוף — ושניהם אינם מובטחים. <strong>זה המספר שצריך להנחות החלטת רכישה, לא התשואה הכוללת.</strong></div>
 </div>
 
 <footer>
