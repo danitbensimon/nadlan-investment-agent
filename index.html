@@ -77,6 +77,25 @@
   .leg{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
   .leg span{display:inline-flex;align-items:center;gap:6px}
   .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .rowhead,.prow>summary{display:grid;grid-template-columns:2.1fr 1fr .7fr 1fr .8fr .8fr .9fr;gap:8px;align-items:center;padding:11px 12px;font-size:13.5px}
+  .rowhead{background:var(--panel2);color:var(--accent2);font-weight:600;border-radius:8px 8px 0 0}
+  .prow{border-bottom:1px solid var(--line);background:var(--panel)}
+  .prow>summary{cursor:pointer;list-style:none}
+  .prow>summary::-webkit-details-marker{display:none}
+  .prow>summary:hover{background:rgba(255,255,255,.03)}
+  .prow[open]>summary{background:rgba(56,189,248,.07)}
+  .prow>summary::before{content:"▸";color:var(--accent2);margin-left:6px;display:inline-block;transition:.15s}
+  .prow[open]>summary::before{transform:rotate(-90deg)}
+  .calc{padding:16px 20px;background:var(--panel2);font-size:13.5px;border-top:1px solid var(--line)}
+  .calc .line{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .calc .line:last-child{border-bottom:none}
+  .calc .tot{font-weight:700;color:var(--accent);border-top:2px solid var(--line);margin-top:6px;padding-top:8px}
+  .tier{font-size:11px;padding:1px 7px;border-radius:5px;margin-right:5px}
+  .t1{background:rgba(74,222,128,.15);color:var(--accent)}
+  .t2{background:rgba(56,189,248,.15);color:var(--accent2)}
+  .t3{background:rgba(224,179,77,.18);color:var(--gold)}
+  @media(max-width:820px){.rowhead,.prow>summary{grid-template-columns:1.6fr 1fr .8fr;font-size:12px}
+    .rowhead span:nth-child(n+4),.prow>summary span:nth-child(n+4){display:none}}
 </style>
 </head>
 <body>
@@ -261,14 +280,9 @@
   </div>
 
   <table>
-    <thead><tr><th>#</th><th>אזור / שכונה</th><th>מרחק מעוגן</th><th>מחיר</th><th>מ״ר</th><th>נטו — ארוכה</th><th>נטו — Airbnb</th><th>מנצח</th><th>תשואה כוללת</th><th>מקור</th></tr></thead>
+    <thead><tr><th>#</th><th>אזור</th><th>מחיר מבוקש</th><th>מ״ר</th><th>€/מ״ר</th><th>נטו ארוכה</th><th>נטו Airbnb</th><th>מנצח</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>אתונה · קיפסלי</td><td>900מ׳ ממטרו</td><td>€95,000</td><td>42</td><td>4.8%</td><td><strong>6.2%</strong></td><td class="yes" style="color:#17914a">Airbnb</td><td><strong style="color:#17914a">11.4%</strong></td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
-      <tr><td>2</td><td>קפריסין · זאקאקי</td><td>2 דק׳ מהחוף</td><td>€370,000</td><td>~90</td><td><strong>3.8%</strong></td><td>2.8%</td><td style="color:#1e5a86">ארוכה</td><td><strong style="color:#17914a">10.8%</strong></td><td><span style="color:#1e5a86">חוזה ↗</span></td></tr>
-      <tr><td>3</td><td>אתונה · פאטיסיה</td><td>1.2ק״מ ממטרו</td><td>€90,000</td><td>40</td><td>4.6%</td><td><strong>5.9%</strong></td><td class="yes" style="color:#17914a">Airbnb</td><td><strong style="color:#17914a">10.5%</strong></td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
-      <tr><td>4</td><td>לסבוס · מיטילנה</td><td>על החוף</td><td>€78,000</td><td>78</td><td>4.1%</td><td><strong>8.4%*</strong></td><td class="yes" style="color:#17914a">Airbnb</td><td><strong style="color:#17914a">10.2%</strong></td><td><span style="color:#1e5a86">Spitogatos ↗</span></td></tr>
-      <tr><td>5</td><td>קפריסין · לרנקה</td><td>1.5ק״מ מהים</td><td>€135,000</td><td>60</td><td><strong>4.4%</strong></td><td>3.9%</td><td style="color:#1e5a86">ארוכה</td><td><strong style="color:#b8860b">9.8%</strong></td><td><span style="color:#1e5a86">Bazaraki ↗</span></td></tr>
-      <tr><td>6</td><td>ת״א · פלורנטין</td><td>400מ׳ מרק״ל</td><td>₪2.35M</td><td>48</td><td><strong>2.9%</strong></td><td>2.4%</td><td style="color:#1e5a86">ארוכה</td><td><strong style="color:#b8860b">9.1%†</strong></td><td><span style="color:#1e5a86">nadlan.gov.il ↗</span></td></tr>
+      <tr><td colspan="8" style="background:#eef7f0;font-weight:700;color:#17914a">↓ הטבלה המלאה עם שורות שנפתחות נמצאת מתחת למוקאפ ↓</td></tr>
     </tbody>
   </table>
   <p style="font-size:11.5px;color:#5b6470;margin-top:8px">* לסבוס: תשואה משכירות קצרת‑טווח עונתית. † ת״א: התשואה הכוללת מגיעה מ‑Value‑add/עליית ערך, לא משכירות. כל מחיר מקושר לעסקה/מקור המקורי.</p>
@@ -308,6 +322,127 @@
     <p style="font-size:13.5px;color:#3a4250">ההזדמנויות החזקות ברבעון מרוכזות באתונה — סטודיו קטן בקיפסלי ופאטיסיה מציע את שילוב התשואה‑פלוס‑צמיחה הטוב ביותר, עם כניסה מתחת ל‑€100K. לימסול בקפריסין בולטת כאלטרנטיבה יציבה עם 6% ברוטו וביקוש שכירות חזק. לסבוס רלוונטית רק במסלול קצר‑טווח תיירותי. תל אביב אינה מייצרת תשואת שכירות (2.6–2.9%) והיא רלוונטית אך ורק כעסקת השבחה/ערך. יעד 10% מושג ב‑4 מתוך 6 המובילים על בסיס תשואה כוללת.</p>
   </div>
 </div>
+
+<h2 id="p6b">6ב · נכסים אמיתיים — לחצי על שורה לפתיחת החישוב</h2>
+<p class="lead" style="font-size:15px">כל הנכסים למטה הם <strong>מודעות אמיתיות</strong> שנמשכו מ‑Spitogatos ו‑Bazaraki. המחיר הוא מחיר מבוקש; החישוב מבוסס על מחיר לאחר הנחת 10%. לחצי על כל שורה כדי לראות בדיוק איך חושבה התשואה.</p>
+
+<div class="card" style="padding:0;overflow:hidden">
+  <div class="rowhead"><span>אזור / סוג</span><span>מחיר מבוקש</span><span>מ״ר</span><span>€/מ״ר</span><span>נטו ארוכה</span><span>נטו Airbnb</span><span>מנצח</span></div>
+
+  <details class="prow"><summary><span><span class="tier t1">תשואה</span>אתונה · קיפסלי · סטודיו</span><span>€95,000</span><span>42</span><span><strong>2,262</strong></span><span>5.3%</span><span class="yes">6.5%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>מחיר מבוקש</span><span>€95,000</span></div>
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€85,500</strong> (€2,036/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד אמיתי בשכונה — €13.2/מ״ר × 42</span><span>€554/חודש</span></div>
+      <div class="line"><span>הכנסה שנתית ארוכה</span><span>€6,653</span></div>
+      <div class="line"><span>ברוטו ארוכה</span><span>7.78%</span></div>
+      <div class="line"><span>מס יווני 15% + ניהול 10% + תחזוקה</span><span>−€2,120</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>5.3%</span></div>
+      <div class="line" style="margin-top:10px"><span>Airbnb: €70/לילה × 45% תפוסה × 365</span><span>€11,498 ברוטו</span></div>
+      <div class="line"><span>ניהול 20% · עמלות 3% · ריהוט · חשבונות</span><span>−€5,940</span></div>
+      <div class="line tot"><span>נטו Airbnb</span><span>6.5% ✓ מנצח</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t1">תשואה</span>אתונה · פלטיה אטיקיס · דירה</span><span>€150,000</span><span>114</span><span><strong>1,316</strong></span><span class="yes">6.8%</span><span>5.9%</span><span class="b">ארוכה</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€135,000</strong> (€1,184/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד אמיתי — €9.6/מ״ר × 114</span><span>€1,094/חודש</span></div>
+      <div class="line"><span>ברוטו ארוכה (€13,133/שנה)</span><span>9.73%</span></div>
+      <div class="line"><span>מס, ניהול, תחזוקה, תקופת ריק</span><span>−€3,960</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>6.8% ✓ מנצח</span></div>
+      <div class="line" style="margin-top:8px;color:var(--muted)"><span>למה לא Airbnb</span><span>דירה גדולה, שכונה לא תיירותית</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t1">תשואה</span>לסבוס · מיטילנה · בית פרטי</span><span>€80,000</span><span>80</span><span><strong>1,000</strong></span><span>3.9%</span><span class="yes">11.2%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€72,000</strong> (€900/מ״ר)</span></div>
+      <div class="line"><span>Airbnb: €80/לילה × 45% × 365</span><span>€13,140 ברוטו (18.25%)</span></div>
+      <div class="line"><span>ניהול 20%, ריהוט, חשבונות, בלאי, עונתיות</span><span>−€5,076</span></div>
+      <div class="line tot"><span>נטו Airbnb</span><span>11.2% ✓ מנצח</span></div>
+      <div class="line" style="margin-top:8px;color:var(--warn)"><span>⚠ סיכון</span><span>שוק דק — קשה למכור. הכנסה מרוכזת ב‑4–5 חודשים</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t2">משפחתי</span>קפריסין · לימסול · 2 חדרים</span><span>€300,000</span><span>94</span><span><strong>3,191</strong></span><span class="yes">4.4%</span><span>3.3%</span><span class="b">ארוכה</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10% — יד שנייה, ללא מע״מ</span><span><strong>€270,000</strong> (€2,872/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד — €14.3/מ״ר × 94</span><span>€1,344/חודש</span></div>
+      <div class="line"><span>ברוטו (€16,128/שנה)</span><span>5.97%</span></div>
+      <div class="line"><span>GeSY 2.65%, ניהול 9%, תחזוקה</span><span>−€4,200</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>4.4% ✓ מנצח</span></div>
+      <div class="line" style="margin-top:8px;color:var(--accent)"><span>יתרון מול העסקה שלך</span><span>אין מע״מ, זמין מיד, תזרים מהיום</span></div>
+    </div></details>
+
+  <details class="prow" open><summary><span><span class="tier t2">שלך</span>קפריסין · זאקאקי · CONIFER</span><span>€370,000<small>+מע״מ</small></span><span>~90</span><span><strong>4,111</strong></span><span class="yes">3.8%</span><span>2.8%</span><span class="b">ארוכה</span></summary>
+    <div class="calc">
+      <div class="line"><span>מחיר חוזה (לא מבוקש — אין הנחה)</span><span>€370,000</span></div>
+      <div class="line"><span>מע״מ מופחת 5% (130מ״ר/€350K ראשונים)</span><span>+€21,300</span></div>
+      <div class="line"><span>סה״כ עלות</span><span><strong>€391,300</strong> (€4,348/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד זאקאקי (נמוך ממרכז לימסול)</span><span>€1,300/חודש</span></div>
+      <div class="line"><span>ברוטו (€15,600/שנה)</span><span>3.99%</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>3.8%</span></div>
+      <div class="line" style="margin-top:10px;color:var(--accent)"><span>העיקר — מינוף off‑plan</span><span>שולם 35% = €136K</span></div>
+      <div class="line"><span>עליית ערך 8%/שנה × שנתיים</span><span>+€61,600</span></div>
+      <div class="line tot"><span>תשואה שנתית על ההון שהופקד</span><span>~20%</span></div>
+      <div class="line" style="margin-top:8px;color:var(--danger)"><span>⚠ סיכונים</span><span>היתר בנייה טרם התקבל · מע״מ מופחת מחייב מגורים ראשיים 10 שנים</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">יוקרה</span>קפריסין · לימסול · פנטהאוז</span><span>€724,000</span><span>300</span><span><strong>2,413</strong></span><span class="yes">6.1%</span><span>4.8%</span><span class="b">ארוכה</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€651,600</strong> (€2,172/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד — €14.3/מ״ר × 300</span><span>€4,290/חודש</span></div>
+      <div class="line"><span>ברוטו (€51,480/שנה)</span><span>7.90%</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>6.1% ✓ מנצח</span></div>
+      <div class="line" style="margin-top:8px;color:var(--accent)"><span>למה זה חריג</span><span>€2,413/מ״ר — <strong>חצי</strong> מממוצע לימסול (€5,553). נכס גדול במחיר למטר נמוך = תשואה גבוהה</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">וילה על הים</span>לסבוס · וילה</span><span>€1,200,000</span><span>320</span><span><strong>3,750</strong></span><span>2.6%</span><span class="yes">4.7%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€1,080,000</strong> (€3,375/מ״ר)</span></div>
+      <div class="line"><span>Airbnb וילה יוקרה: €350/לילה × 40% × 365</span><span>€51,100 ברוטו (4.73%)</span></div>
+      <div class="line"><span>ניהול 22%, ריהוט יוקרה, בריכה, גינון</span><span>−€20,400</span></div>
+      <div class="line tot"><span>נטו Airbnb</span><span>2.8% נטו · ברוטו 4.7% ✓ מנצח מול ארוכה</span></div>
+      <div class="line" style="margin-top:8px;color:var(--warn)"><span>⚠ הערכה, לא נתון</span><span>אין לי נתוני Airbnb ספציפיים ללסבוס — מבוסס על 53% תפוסת איים יוונים</span></div>
+      <div class="line" style="color:var(--danger)"><span>⚠ נזילות</span><span>וילה במיליון על אי קטן — קהל קונים צר מאוד</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">חזית ים</span>קפריסין · לימסול · חזית ים</span><span>€2,750,000</span><span>164</span><span><strong>16,768</strong></span><span class="r">2.4%</span><span>1.9%</span><span class="b">ארוכה</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€2,475,000</strong> (€15,091/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד יוקרה — €30/מ״ר × 164</span><span>€4,920/חודש</span></div>
+      <div class="line"><span>ברוטו (€59,040/שנה)</span><span>2.39%</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>2.4%</span></div>
+      <div class="line" style="margin-top:8px;color:var(--danger)"><span>המסקנה</span><span>€16,768/מ״ר — פי 3 מממוצע לימסול. זה מוצר צריכה/יוקרה, <strong>לא מוצר תשואה</strong>. נקנה לשימוש עצמי או סטטוס, לא להשקעה</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">יוקרה</span>אתונה · קולונאקי</span><span>€900,000</span><span>110</span><span><strong>8,182</strong></span><span class="r">2.1%</span><span>2.9%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€810,000</strong> (€7,364/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד יוקרה — €19.5/מ״ר × 110</span><span>€2,145/חודש</span></div>
+      <div class="line"><span>ברוטו (€25,740/שנה)</span><span>3.18%</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>2.1%</span></div>
+      <div class="line" style="margin-top:8px;color:var(--muted)"><span>השוואה</span><span>קולונאקי €8,182/מ״ר מול קיפסלי €2,262 — פי 3.6 במחיר, <strong>חצי</strong> מהתשואה</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">יוקרה</span>אתונה · פנגרטי · מזונט</span><span>€895,000</span><span>216</span><span><strong>4,144</strong></span><span>3.0%</span><span>3.6%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€805,500</strong> (€3,729/מ״ר)</span></div>
+      <div class="line"><span>שכ״ד — €12.8/מ״ר × 216</span><span>€2,765/חודש</span></div>
+      <div class="line"><span>ברוטו (€33,178/שנה)</span><span>4.12%</span></div>
+      <div class="line tot"><span>נטו ארוכה</span><span>3.0%</span></div>
+      <div class="line" style="margin-top:8px;color:var(--accent)"><span>נקודה</span><span>מזונט גדול ב‑€3,729/מ״ר — יחס טוב יותר מקולונאקי. גודל מוריד מחיר למטר</span></div>
+    </div></details>
+
+  <details class="prow"><summary><span><span class="tier t3">וילה</span>לסבוס · וילה גדולה</span><span>€1,500,000</span><span>368</span><span><strong>4,076</strong></span><span>2.4%</span><span class="yes">4.4%</span><span class="yes">Airbnb</span></summary>
+    <div class="calc">
+      <div class="line"><span>אחרי הנחת 10%</span><span><strong>€1,350,000</strong> (€3,668/מ״ר)</span></div>
+      <div class="line"><span>Airbnb: €400/לילה × 40% × 365</span><span>€58,400 ברוטו (4.33%)</span></div>
+      <div class="line tot"><span>נטו Airbnb</span><span>~2.6%</span></div>
+      <div class="line" style="margin-top:8px;color:var(--danger)"><span>⚠ הנכס הכי פחות נזיל בדוח</span><span>וילה של מיליון וחצי על אי עם שוק דק</span></div>
+    </div></details>
+
+</div>
+
+<div class="note"><strong>מה שהטבלה מוכיחה:</strong> ככל שהמחיר למ״ר עולה, התשואה יורדת. קיפסלי €2,262/מ״ר נותנת 5.3% נטו; חזית ים בלימסול €16,768/מ״ר נותנת 2.4%. <strong>נכסי יוקרה ווילות אינם מוצרי תשואה</strong> — הם מוצרי שימוש, סטטוס, ועליית ערך. אם היעד הוא 10%, הוא לא יגיע מווילה על הים אלא מנכס קטן וזול בשכונה עובדת, או ממינוף.</div>
 
 <!-- 7 -->
 <h2 id="p7">7 · תדירות, אוטומציה והתראות</h2>
@@ -416,6 +551,81 @@
       <tr><td><strong>Buy & Appreciate</strong></td><td>החזקה ארוכה לרווח הון (מס שבח מושהה ביוון)</td><td>Golden Visa יוון, מרכז אתונה</td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- 10 -->
+<h2 id="p10">10 · חציונים שכונתיים אמיתיים + כלל הנחת מחיר</h2>
+<div class="note"><strong>כלל ברזל חדש:</strong> ביוון ובקפריסין אין מרשם מכר פומבי — המחיר במודעה הוא <em>מחיר מבוקש</em>, ובפועל מתמקחים. הסוכן מחיל אוטומטית <strong>הנחה של 10%</strong> על כל מחיר מבוקש לפני חישוב תשואה. בישראל אין הנחה — <a href="https://www.nadlan.gov.il/" target="_blank">nadlan.gov.il</a> נותן מחיר עסקה שנסגרה בפועל.</div>
+
+<div class="card" style="overflow-x:auto">
+  <h3 style="margin-top:0">חציונים אמיתיים — אתונה (מדגם 360 מכר + 300 השכרה, Spitogatos)</h3>
+  <table>
+    <thead><tr><th>שכונה</th><th>דגימות מכר/שכר</th><th>חציון מבוקש €/מ״ר</th><th>אחרי הנחה 10%</th><th>שכ״ד €/מ״ר לחודש</th><th>תשואה ברוטו</th></tr></thead>
+    <tbody>
+      <tr><td><strong>קיפסלי</strong></td><td>12 / 10</td><td>1,655</td><td>1,490</td><td>13.2</td><td class="yes"><strong>10.67%</strong></td></tr>
+      <tr><td><strong>פלטיה אטיקיס</strong></td><td>24 / 10</td><td>1,615</td><td>1,454</td><td>9.6</td><td class="yes"><strong>7.94%</strong></td></tr>
+      <tr><td><strong>אגיוס גאורגיוס</strong></td><td>12 / 10</td><td>2,268</td><td>2,041</td><td>12.8</td><td class="yes"><strong>7.51%</strong></td></tr>
+      <tr><td><strong>פנגרטי מרכז</strong></td><td>24 / 10</td><td>5,348</td><td>4,813</td><td>12.8</td><td class="part">3.20%</td></tr>
+      <tr><td><strong>מרכז (יוקרה)</strong></td><td>12 / 20</td><td>6,667</td><td>6,000</td><td>9.1</td><td class="r">1.81%</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="border-right-color:var(--danger);background:rgba(248,113,113,.06)"><strong>אזהרת מדגם:</strong> בין 10 ל‑24 דגימות לשכונה — מספיק לכיוון, לא מספיק להחלטת רכישה. לפני קנייה נדרש מדגם של 50+ לשכונה. הפער בין קיפסלי (10.67%) לשכונות היוקרה (1.81%) הוא פי 5 — <strong>זו ההוכחה שממוצע עירוני חסר ערך.</strong></div>
+</div>
+
+<!-- 11 -->
+<h2 id="p11">11 · מימון ומינוף</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">תנאי משכנתא לזרים (ינואר 2026)</h3>
+    <table>
+      <thead><tr><th></th><th>🇬🇷 יוון</th><th>🇨🇾 קפריסין</th></tr></thead>
+      <tbody>
+        <tr><td><strong>אחוז מימון</strong></td><td>50–65%</td><td>60–70%</td></tr>
+        <tr><td><strong>הון עצמי</strong></td><td>35–40%+</td><td>30–40%+</td></tr>
+        <tr><td><strong>ריבית</strong></td><td>3.0–6.5% (רוב 4.0–5.5%)</td><td>ממוצע 3.70%</td></tr>
+        <tr><td><strong>קבועה</strong></td><td class="yes">מ‑2.90% ל‑3 שנים <strong>לתושבי ישראל</strong></td><td>מ‑2.95% (3ש׳) · 3.10% (5ש׳)</td></tr>
+        <tr><td><strong>תקופה</strong></td><td>עד 20 שנה</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-bottom:0"><strong>הטבה ספציפית לישראלים:</strong> בנקים ביוון מציעים לתושבי ישראל ריבית קבועה שמתחילה ב‑2.90% — נמוך מהמקובל לרוכשים מחוץ לאיחוד.</div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">איך מינוף משנה את התשואה — דוגמה אמיתית</h3>
+    <p style="font-size:14px;color:var(--muted)">סטודיו קיפסלי 42 מ״ר · מבוקש €95,000 · אחרי הנחה €85,500 · שכ״ד אמיתי €554/ח׳</p>
+    <div class="bars">
+      <div class="brow"><span class="lbl">ללא מינוף</span><div class="btrack"><div class="bfill" style="width:33%;background:#38bdf8"></div></div><span class="bval">6.5%</span></div>
+      <div class="brow"><span class="lbl">מינוף 60%</span><div class="btrack"><div class="bfill" style="width:100%;background:#4ade80"></div></div><span class="bval">19.7%</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">במינוף 60% בריבית 4.5%: הון עצמי כ‑€42,200 (כולל עלויות). תזרים אחרי משכנתא €762, החזר קרן €1,586, ועליית ערך 7% על הנכס המלא €5,985. סה״כ תשואה על ההון כ‑<strong>19.7%</strong>.</p>
+    <div class="note" style="margin-bottom:0;border-right-color:var(--danger);background:rgba(248,113,113,.06)">מינוף מגדיל גם הפסד. בעליית ערך אפס התשואה יורדת ל‑5.6%, ובירידת ערך המינוף מכפיל את הנזק.</div>
+  </div>
+</div>
+
+<!-- 12 -->
+<h2 id="p12">12 · סיכון מטבע — שקל מול אירו</h2>
+<div class="card">
+  <div class="grid g3" style="margin-bottom:16px">
+    <div class="stat"><div class="n">3.48</div><div class="l">שער נוכחי EUR/ILS</div></div>
+    <div class="stat"><div class="n" style="color:var(--danger)">−11.1%</div><div class="l">שינוי בשנה האחרונה</div></div>
+    <div class="stat"><div class="n" style="color:var(--warn)">3.26–4.02</div><div class="l">טווח 52 שבועות</div></div>
+  </div>
+  <p>את חיה בשקלים וקונה באירו. זהו סיכון שלא מופיע בשום דוח נדל״ן סטנדרטי — <strong>והוא גדול מהתשואה עצמה.</strong></p>
+  <p><strong>המספר שחייבים להפנים:</strong> בשנה האחרונה האירו נחלש מול השקל ב‑11.1%. משקיע ישראלי שקנה נכס באירו לפני שנה, גם אם הנכס עלה 8% והניב 5% שכירות — <strong>הפסיד בשקלים.</strong> תנודת המטבע מחקה יותר משנתיים של תשואת שכירות.</p>
+  <p>הטווח השנתי נע בין 3.26 ל‑4.02, כלומר תנודה של מעל 23%. תחזיות 2026 נעות בין 3.20 ל‑3.54.</p>
+  <div class="grid g2">
+    <div>
+      <h3>איך הסוכן מטפל בזה</h3>
+      <p><span class="pill b">תשואה דו‑מטבעית</span> כל נכס מוצג גם באירו וגם בשקלים, לפי השער ביום הרכישה מול היום.</p>
+      <p><span class="pill y">תרחיש מטבע</span> שלושה תרחישים: שער יציב, התחזקות שקל 10%, היחלשות שקל 10%.</p>
+    </div>
+    <div>
+      <h3>דרכי הגנה</h3>
+      <p><span class="pill g">משכנתא באירו</span> הלוואה במטבע הנכס מקזזת חלק מהחשיפה — ההתחייבות והנכס באותו מטבע.</p>
+      <p><span class="pill g">הכנסה באירו</span> שכר הדירה באירו משמש להחזר ההלוואה באירו, בלי המרה.</p>
+      <p><span class="pill y">גידור</span> עסקאות הגנה על השער — עולה כסף ומקטין תשואה.</p>
+    </div>
+  </div>
+  <div class="note"><strong>מסקנה:</strong> מינוף באירו הוא לא רק כלי תשואה — הוא כלי <strong>הגנה מטבעית</strong>. ככל שיותר מהעסקה ממומן באירו ומוחזר משכירות באירו, כך החשיפה השקלית קטנה.</div>
 </div>
 
 <footer>
