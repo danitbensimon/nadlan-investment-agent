@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ניתוח עסקה — TEL AVIVA, יפו ד׳ · דירת 2.5 חדרים</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;
+    --txt:#e8ebf0;--muted:#9aa4b2;--accent:#4ade80;--accent2:#38bdf8;
+    --warn:#fbbf24;--danger:#f87171;--radius:14px;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",Arial,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:1100px;margin:0 auto;padding:30px 20px 70px}
+  header.hero{background:linear-gradient(135deg,#1a2233,#0f1115 65%);border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px;margin-bottom:24px}
+  .badge{display:inline-block;background:rgba(56,189,248,.13);color:var(--accent2);border:1px solid rgba(56,189,248,.3);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:12px}
+  h1{margin:0 0 8px;font-size:28px}
+  h2{font-size:21px;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:17px;margin:20px 0 8px;color:var(--accent2)}
+  .lead{color:var(--muted);font-size:16.5px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:14px 0}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:840px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px;text-align:center}
+  .stat .n{font-size:25px;font-weight:700}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:3px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+  th,td{padding:10px 11px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:var(--accent2);font-weight:600}
+  .pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:6px;font-weight:600;margin-left:4px}
+  .pg{background:rgba(74,222,128,.15);color:var(--accent)}
+  .pb{background:rgba(56,189,248,.15);color:var(--accent2)}
+  .py{background:rgba(251,191,36,.15);color:var(--warn)}
+  .pr{background:rgba(248,113,113,.15);color:var(--danger)}
+  .note{border-right:3px solid var(--warn);background:rgba(251,191,36,.06);padding:11px 15px;border-radius:8px;font-size:14.5px;margin:11px 0}
+  .bad{border-right-color:var(--danger);background:rgba(248,113,113,.07)}
+  .good{border-right-color:var(--accent);background:rgba(74,222,128,.07)}
+  .bars{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+  .brow{display:grid;grid-template-columns:160px 1fr 62px;align-items:center;gap:10px;font-size:13.5px}
+  .btrack{background:var(--panel2);border-radius:6px;height:22px;overflow:hidden;display:flex}
+  .bfill{height:100%}
+  .lbl{color:var(--muted);text-align:right}
+  .bval{font-weight:700;text-align:left}
+  .score{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .ring{width:150px;height:150px;flex:0 0 150px}
+  .scorerow{display:grid;grid-template-columns:180px 1fr 42px;gap:10px;align-items:center;font-size:14px;margin:7px 0}
+  footer{margin-top:44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="badge">ניתוח השקעה · יולי 2026</span>
+  <h1>TEL AVIVA — אלמוג בפארק יפו · דירת 2.5 חדרים</h1>
+  <p class="lead">
+  בניין 9 · קומה 9 · דירה 36 · דגם 2.5C · <strong>61.64 מ״ר בנוי + 13.67 מ״ר מרפסת</strong><br>
+  ₪2,806,000 כולל חניה ומחסן · אכלוס צפוי בעוד 6 שנים<br>
+  שדרות ירושלים / קהילת קנדה, יפו ד׳ · אדריכלים: ציפור גרשון‑ציפור ברק + Bar Orian</p>
+</header>
+
+<div class="card">
+  <h2 style="margin-top:0;border:none;padding:0">הציון</h2>
+  <div class="score">
+    <svg class="ring" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#2a2f3a" stroke-width="13"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="13"
+        stroke-dasharray="314" stroke-dashoffset="126" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+      <text x="60" y="58" font-size="34" fill="#fbbf24" text-anchor="middle" font-weight="bold">60</text>
+      <text x="60" y="78" font-size="13" fill="#9aa4b2" text-anchor="middle">מתוך 100</text>
+    </svg>
+    <div style="flex:1;min-width:290px">
+      <div class="scorerow"><span class="lbl">תשתיות (רכבת קלה)</span><div class="btrack"><div class="bfill" style="width:88%;background:#4ade80"></div></div><span class="bval">88</span></div>
+      <div class="scorerow"><span class="lbl">מיקום — 880מ׳ מהים</span><div class="btrack"><div class="bfill" style="width:82%;background:#4ade80"></div></div><span class="bval">82</span></div>
+      <div class="scorerow"><span class="lbl">איכות המוצר</span><div class="btrack"><div class="bfill" style="width:75%;background:#4ade80"></div></div><span class="bval">75</span></div>
+      <div class="scorerow"><span class="lbl">מחיר מול עסקאות באזור</span><div class="btrack"><div class="bfill" style="width:65%;background:#fbbf24"></div></div><span class="bval">65</span></div>
+      <div class="scorerow"><span class="lbl">צביון וביקוש בשכונה</span><div class="btrack"><div class="bfill" style="width:42%;background:#f87171"></div></div><span class="bval">42</span></div>
+      <div class="scorerow"><span class="lbl">תשואת שכירות</span><div class="btrack"><div class="bfill" style="width:30%;background:#f87171"></div></div><span class="bval">30</span></div>
+      <div class="scorerow"><span class="lbl">נזילות ויציאה</span><div class="btrack"><div class="bfill" style="width:32%;background:#f87171"></div></div><span class="bval">32</span></div>
+      <div class="scorerow"><span class="lbl">סיכון היצע</span><div class="btrack"><div class="bfill" style="width:22%;background:#f87171"></div></div><span class="bval">22</span></div>
+      <div class="scorerow"><span class="lbl">אופק זמן</span><div class="btrack"><div class="bfill" style="width:28%;background:#f87171"></div></div><span class="bval">28</span></div>
+    </div>
+  </div>
+  <div class="note"><strong>60 מתוך 100 — עסקה בינונית‑פלוס.</strong> המחיר הוגן מול עסקאות שנסגרו באזור, המוצר איכותי, ושני מנועי ערך אמיתיים: רכבת קלה פועלת על הציר ומרחק של <strong>880 מטר מהים</strong>. מנגד: יפו ד׳ היא מהשכונות הפחות מבוקשות ברובע, התשואה נמוכה, השוק המקומי איטי, וצפויה הצפת היצע חריגה. <strong>זו אינה עסקת תשואה — זו רכישה במחיר הוגן של הימור על התחדשות עירונית, במיקום עם יסודות טובים.</strong></div>
+</div>
+
+<h2>מספרי מפתח</h2>
+<div class="grid g4">
+  <div class="stat"><div class="n" style="color:var(--accent2)">₪2.81M</div><div class="l">מחיר כולל חניה ומחסן</div></div>
+  <div class="stat"><div class="n" style="color:var(--accent)">₪41,304</div><div class="l">₪/מ״ר בניכוי חניה ומחסן</div></div>
+  <div class="stat"><div class="n" style="color:var(--danger)">2.2%</div><div class="l">תשואה נטו צפויה</div></div>
+  <div class="stat"><div class="n" style="color:var(--danger)">6 שנים</div><div class="l">עד אכלוס</div></div>
+</div>
+
+<h2>🔍 עסקאות השוואה באזור <span class="pill pg">מדוד</span></h2>
+<p class="lead" style="font-size:15px">הבנצ׳מרק: שכונת <strong>צהלון ושיכוני חסכון</strong> — צמודה ליפו ד׳, על אותו ציר רכבת קלה, עם אותו פרופיל אוכלוסייה. נתוני מדלן, מעודכן 15.7.2026.</p>
+
+<div class="grid g4">
+  <div class="stat" style="border-color:var(--accent)"><div class="n" style="color:var(--accent)">₪40,200</div><div class="l"><strong>ממוצע למ״ר</strong> — נומינלי, היום<br><span style="color:var(--accent)">← המדד התקף להשוואה</span></div></div>
+  <div class="stat"><div class="n" style="color:var(--muted)">₪2.98M</div><div class="l">מחיר ממוצע לדירה<br><span style="color:var(--danger)">לא בר‑השוואה ישירה</span></div></div>
+  <div class="stat"><div class="n" style="color:var(--danger)">2.28%</div><div class="l">תשואה שנתית בשכונה</div></div>
+  <div class="stat"><div class="n" style="color:var(--warn)">₪7,900</div><div class="l">שכ״ד ממוצע</div></div>
+</div>
+<div class="note bad"><strong>אזהרת קריאה — שני המספרים אינם שווי ערך:</strong><br>
+<strong>₪2.98 מיליון</strong> הוא ממוצע גולמי של <u>כל סוגי הדירות בשכונה מעורבבים</u> — 3 חדרים, 4 חדרים, גדלים שונים. הדירה הנבחנת היא 61.64 מ״ר, קטנה מהדירה הטיפוסית בממוצע הזה. <strong>השוואה בין ₪2.81M ל‑₪2.98M נראית מחמיאה אך חסרת משמעות</strong>, משום שהיא משווה נכסים בגדלים שונים.<br><br>
+<strong>₪40,200 למ״ר</strong> הוא המדד היחיד שמנטרל הבדלי גודל, ולכן הוא הבסיס לכל ההשוואות בדוח.<br><br>
+<strong>ולגבי היוון:</strong> שני המספרים הם <u>נומינליים, לנכסים מוכנים היום</u> — אין בהם היוון. שכבת ההיוון מופיעה בסעיף נפרד ויושבת מעליהם.</div>
+
+<div class="card" style="overflow-x:auto">
+  <h3 style="margin-top:0">עסקאות שנסגרו בפועל — 2026</h3>
+  <div class="note"><strong>שימי לב:</strong> כל העסקאות בטבלה זו הן ב<strong>בניינים קיימים, בנויים ומאוכלסים</strong> — נכסים שנמסרו לקונה מיד ומייצרים שכר דירה מהיום. הדירה הנבחנת היא <strong>על הנייר, מסירה 2032</strong>. השוואת הפרויקטים החדשים מופיעה בטבלה שאחרי.</div>
+  <table>
+    <thead><tr><th>כתובת</th><th>תאריך</th><th>מחיר</th><th>מ״ר</th><th>₪/מ״ר</th><th>חד׳</th><th>סטטוס</th></tr></thead>
+    <tbody>
+      <tr style="background:rgba(56,189,248,.09)"><td><strong>הדירה הנבחנת</strong></td><td>—</td><td><strong>₪2.81M</strong></td><td>61.64</td><td><strong>41,304</strong></td><td>2.5</td><td class="pr"><strong>על הנייר · 2032</strong></td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%9E%D7%A2%D7%A4%D7%99%D7%9C%D7%99-%D7%A1%D7%9C%D7%95%D7%90%D7%93%D7%95%D7%A8-7-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">מעפילי סלואדור 7‑11 ↗</a></td><td>15.3.26</td><td>₪3.35M</td><td>90</td><td>37,222</td><td>4</td><td class="pg">בנוי 2023 · מאוכלס</td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%A9%D7%9E%D7%95%D7%90%D7%9C-%D7%99%D7%A8%D7%97%D7%99%D7%A0%D7%90%D7%99-8-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">שמואל ירחינאי 8‑10 ↗</a></td><td>6.4.26</td><td>₪3.30M</td><td>79</td><td>41,772</td><td>3</td><td class="pg">בנוי 2018 · מאוכלס</td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%A9%D7%9E%D7%95%D7%90%D7%9C-%D7%99%D7%A8%D7%97%D7%99%D7%A0%D7%90%D7%99-8-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">שמואל ירחינאי 8‑10 ↗</a></td><td>12.3.26</td><td>₪3.48M</td><td>79</td><td>44,050</td><td>3</td><td class="pg">בנוי 2018 · מאוכלס</td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%93%D7%91-%D7%9E%D7%9E%D7%96%D7%A8%D7%99%D7%A5-14-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">דב ממזריץ 14‑20 ↗</a></td><td>11.3.26</td><td>₪2.10M</td><td>47</td><td>44,680</td><td>3</td><td>בנוי 1960 · מאוכלס</td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%A9%D7%93%D7%A8%D7%95%D7%AA-%D7%94%D7%91%D7%A2%D7%A9%D7%98-15-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank"><strong>שדרות בעשט 15 ↗</strong></a></td><td>13.4.26</td><td>₪2.21M</td><td>47</td><td>47,055</td><td><strong>2.5</strong></td><td>בנוי 1960 · מאוכלס</td></tr>
+      <tr><td><a href="https://www.madlan.co.il/address/%D7%93%D7%91-%D7%9E%D7%9E%D7%96%D7%A8%D7%99%D7%A5-14-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">דב ממזריץ 14‑20 ↗</a></td><td>10.4.26</td><td>₪2.42M</td><td>47</td><td>51,489</td><td>3</td><td>בנוי 1960 · מאוכלס</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--muted);margin-top:8px">🔗 מקור הנתונים המלא: <a href="https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A6%D7%94%D7%9C%D7%95%D7%9F-%D7%95%D7%A9%D7%99%D7%9B%D7%95%D7%A0%D7%99-%D7%97%D7%A1%D7%9B%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C" target="_blank">מדלן — עמוד שכונת צהלון ושיכוני חסכון</a> · עדכון 15.7.2026. הקישורים מובילים לעמודי הכתובת במדלן עם היסטוריית העסקאות המלאה בכל בניין.</p>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">⏳ עלות ההמתנה</h3>
+    <p>הבניין מ‑2018 נמכר ב‑₪41,772–44,050 למ״ר, והבניין מ‑2023 ב‑₪37,222 — <strong>שניהם מאוכלסים ומייצרים שכר דירה היום.</strong> הדירה הנבחנת מתומחרת באותו טווח, ומתקבלת בעוד 6 שנים.</p>
+    <p>בשכ״ד של ₪7,200 לחודש, 6 שנות המתנה הן <strong>כ‑₪518,000 הכנסה שלא תתקבל</strong>.</p>
+    <div class="note"><strong>בפרספקטיבה נכונה:</strong> בשוק הישראלי דירות על הנייר אינן מתומחרות מתחת לדירות מוכנות — הן מתומחרות בשווה או מעל, וזו נורמה מקובלת. הפיצוי מגיע דרך <strong>לוח התשלומים</strong>: ההון נפרס על 6 שנים במקום להיות מושקע היום. לכן ההשוואה המשמעותית אינה מול דירה מוכנה, אלא <strong>מול פרויקטים חדשים מתחרים באזור</strong> — כמפורט להלן.</div>
+  </div>
+</div>
+
+<h2>🏗️ השוואת פרויקטים חדשים באזור</h2>
+<p class="lead" style="font-size:15px">זו ההשוואה הרלוונטית להחלטה — לא מול דירות יד שנייה, אלא מול הפרויקטים שמתחרים על אותו קונה.</p>
+<div class="card" style="overflow-x:auto">
+  <table>
+    <thead><tr><th>פרויקט</th><th>יזם</th><th>מיקום</th><th>היקף</th><th>מחיר כניסה</th><th>סטטוס ומסירה</th></tr></thead>
+    <tbody>
+      <tr style="background:rgba(56,189,248,.09)">
+        <td><strong>TEL AVIVA</strong><br><small style="color:var(--muted)">הנבחן</small></td>
+        <td>אלמוג</td>
+        <td>שד׳ ירושלים / קהילת קנדה</td>
+        <td>800 יח״ד · 12 בניינים · עד 29 ק׳</td>
+        <td><strong>₪2,806,000</strong><br><small>2.5 חד׳, 61.64 מ״ר</small></td>
+        <td class="pr"><strong>מסירה 2032</strong><br><small>~6 שנים</small></td>
+      </tr>
+      <tr>
+        <td><strong>אקרו בשדרה</strong></td>
+        <td>אקרו · ביצוע אשטרום</td>
+        <td class="pg">שד׳ ירושלים, בין המחרוזת לקהילת קנדה · <strong>ליד הקו האדום ומטרו M2 העתידי</strong></td>
+        <td>388 יח״ד · 7 בניינים · עד 18 ק׳<br><small style="color:var(--muted)">96 לבעלי זכויות · פארק פנימי 115מ׳</small></td>
+        <td class="pg"><strong>₪2.25M — דירת 2 חד׳</strong><br><small>עד ₪5.9M ל‑5 חד׳ · <strong>92 דירות כבר נמכרו</strong></small></td>
+        <td class="pg"><strong>בביצוע בפועל</strong><br><small>הריסה ואבן פינה 6/2026 · פינוי מ‑4/2026</small></td>
+      </tr>
+      <tr>
+        <td><strong>GO YAFO TEL AVIV</strong></td>
+        <td>אקרו + אשדר</td>
+        <td>ציר היינריך היינה, סמוך לשד׳ ירושלים · ליד תחנת רק״ל</td>
+        <td>350 יח״ד · 5 בניינים · 15–16 ק׳<br><small style="color:var(--muted)">מתוכן 163 מחיר למשתכן</small></td>
+        <td><small>לא פורסם בשוק החופשי</small></td>
+        <td class="py"><strong>38 חודשי ביצוע</strong><br><small>מתחילת העבודות</small></td>
+      </tr>
+      <tr>
+        <td><strong>יפו בשדרה</strong></td>
+        <td>בולווארד</td>
+        <td>שד׳ ירושלים 133</td>
+        <td>55 יח״ד · 2 בניינים · 5–11 ק׳</td>
+        <td><small>לא פורסם</small></td>
+        <td class="py">בנייה חדשה</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>⚠ הבהרה חשובה לגבי המחירים:</strong> ₪2.25M אצל אקרו הוא ל<strong>דירת 2 חדרים</strong>, בעוד ₪2.806M כאן הוא ל<strong>2.5 חדרים בת 61.64 מ״ר</strong>. <strong>אלה מוצרים שונים ואין להשוות ביניהם ישירות.</strong> אם דירת ה‑2 חדרים של אקרו היא כ‑50 מ״ר, המחיר למ״ר שם הוא כ‑₪45,000 — קרוב מאוד ל‑₪45,522 כאן. <strong>כלומר במחיר למ״ר שני הפרויקטים כנראה דומים, וההפרש הוא בגודל הדירה.</strong> יש לבקש מאקרו את המחיר לדירת 2.5–3 חדרים ואת השטח המדויק, כדי להשוות נכון.</div>
+  <div class="note bad"><strong>ההבדלים האמיתיים אינם במחיר אלא באלה:</strong><br>
+  <strong>1. מועד מסירה —</strong> אקרו כבר בביצוע (הריסה 6/2026). הנבחן נמסר ב‑2032. <strong>פער של שנים.</strong><br>
+  <strong>2. תחבורה —</strong> אקרו סמוך לקו האדום <u>וגם</u> למטרו M2 העתידי.<br>
+  <strong>3. היקף —</strong> 388 יח״ד מול 800. <strong>הפרויקט הנבחן הוא עצמו מקור הצפת ההיצע הגדולה יותר.</strong><br>
+  <strong>4. ודאות —</strong> אצל אקרו 92 דירות כבר נמכרו והקבלן (אשטרום) ידוע. כאן לא פורסם.</div>
+  <p style="font-size:13px;color:var(--muted)">🔗 <strong>מקור המחירים של אקרו:</strong> <a href="https://www.bizportal.co.il/realestates/news/article/20034105" target="_blank">ביזפורטל, 17.6.2026 — "388 דירות חדשות: פרויקט ההתחדשות העירונית של אקרו ביפו ד' יצא לדרך"</a> · <a href="https://acro-ave.co.il/" target="_blank">אתר הפרויקט</a> · <a href="https://go-yafotlv.co.il/" target="_blank">GO YAFO</a> · <a href="https://www.madlan.co.il/projects/JERUSALEM_BLVD_133_TEL_AVIV" target="_blank">יפו בשדרה</a></p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">📉 נזילות השוק המקומי</h3>
+  <div class="grid g3">
+    <div class="stat"><div class="n" style="color:var(--warn)">37</div><div class="l">נמכרו בשנה האחרונה</div></div>
+    <div class="stat"><div class="n" style="color:var(--danger)">60</div><div class="l">מוצעות למכירה כעת</div></div>
+    <div class="stat"><div class="n" style="color:var(--danger)">~19 ח׳</div><div class="l">מלאי לפי קצב המכירות</div></div>
+  </div>
+  <div class="note bad">בשכונה נמכרות כ‑37 דירות בשנה, ומוצעות כעת 60. המלאי הקיים לבדו ייקח כ‑19 חודשים להימכר — <strong>שוק איטי</strong>. אל מול זה עומדות 800 הדירות של אלמוג ו‑388 של אקרו. גם אם רק שליש מהרוכשים ירצו למכור או להשכיר סמוך לאכלוס, מאות דירות ייכנסו לשוק שסופג 37 בשנה.</div>
+</div>
+
+<h2>💱 היוון — הבדיקה הנכונה לנכס עתידי</h2>
+<div class="note bad"><strong>למה השוואה לעסקאות אינה מספיקה:</strong> עסקאות שנסגרו מודדות שווי של נכס <u>מוכן, היום</u>. הדירה הנבחנת מתקבלת בעוד 6 שנים. השוואה נומינלית בין השניים מתעלמת מערך הזמן של הכסף, משכירות שלא תתקבל, ומסיכון הביצוע. <strong>הכלי הנכון הוא היוון.</strong></div>
+
+<div class="card">
+  <h3 style="margin-top:0">שלב 1 — שווי הנכס אילו היה מוכן היום</h3>
+  <table>
+    <tbody>
+      <tr><td>61.64 מ״ר × ₪40,200 (ממוצע השכונה)</td><td>₪2,478,000</td></tr>
+      <tr><td>+ חניה ומחסן</td><td>₪260,000</td></tr>
+      <tr><td><strong>שווי מוכן היום</strong></td><td><strong>₪2,738,000</strong></td></tr>
+      <tr><td>מחיר מבוקש</td><td>₪2,806,000</td></tr>
+      <tr><td><strong>פער</strong></td><td class="py"><strong>+2.5% מעל שווי נכס מוכן</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="note bad">כלומר משולם <strong>מחיר מלא של נכס מוכן, ואף מעט מעליו</strong> — עבור נכס שיתקבל בעוד 6 שנים.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">שלב 2 — כמה ראוי לשלם היום (היוון נומינלי)</h3>
+  <p style="color:var(--muted);font-size:14px">בהנחת עליית ערך 3% לשנה, השווי בעוד 6 שנים יהיה ₪3,269,000. מה שראוי לשלם היום, לפי תשואה נדרשת:</p>
+  <div class="bars">
+    <div class="brow"><span class="lbl">מחיר מבוקש</span><div class="btrack"><div class="bfill" style="width:100%;background:#f87171"></div></div><span class="bval">₪2.81M</span></div>
+    <div class="brow"><span class="lbl">בתשואה נדרשת 5%</span><div class="btrack"><div class="bfill" style="width:87%;background:#fbbf24"></div></div><span class="bval">₪2.44M</span></div>
+    <div class="brow"><span class="lbl">בתשואה נדרשת 7%</span><div class="btrack"><div class="bfill" style="width:78%;background:#38bdf8"></div></div><span class="bval">₪2.18M</span></div>
+    <div class="brow"><span class="lbl">בתשואה נדרשת 9%</span><div class="btrack"><div class="bfill" style="width:69%;background:#4ade80"></div></div><span class="bval">₪1.95M</span></div>
+  </div>
+  <div class="note bad"><strong>על בסיס נומינלי — אילו שולם הכל היום — העסקה יקרה ב‑15% עד 44%.</strong> אבל זהו אינו החישוב הנכון, כי התשלום אינו מתבצע היום. ראי שלב 3.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">שלב 2ב — מה יהיה שווי הנכס בעוד 6 שנים</h3>
+  <p style="color:var(--muted);font-size:14px">₪40,200 למ״ר הוא <strong>נומינלי, להיום</strong>. השאלה האמיתית היא כמה יהיה בשנת 2032. הכל תלוי בשיעור הצמיחה שמניחים — <strong>וההנחה הזו היא שמכריעה את העסקה</strong>.</p>
+  <table>
+    <thead><tr><th>תרחיש צמיחה</th><th>₪/מ״ר ב‑2032</th><th>שווי הדירה (61.64 מ״ר + חניה)</th><th>מול ₪2.81M ששולמו</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2%</strong> — קצב ת״א הנוכחי</td><td>₪45,280</td><td>₪3.05M</td><td class="pr">+8.6% ב‑6 שנים · <strong>1.4% לשנה</strong></td></tr>
+      <tr><td><strong>4%</strong> — התאוששות מתונה</td><td>₪50,870</td><td>₪3.40M</td><td class="py">+21% · 3.2% לשנה</td></tr>
+      <tr><td><strong>6%</strong> — אפקט התחדשות</td><td>₪57,020</td><td>₪3.78M</td><td class="pg">+35% · 5.1% לשנה</td></tr>
+      <tr><td><strong>10%</strong> — חזרה על 2018–2026</td><td>₪71,200</td><td>₪4.65M</td><td class="pg">+66% · <strong>8.8% לשנה</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="note bad"><strong>וזו המלכודת שצריך להיזהר ממנה:</strong> קל להסתכל על התשואה ההיסטורית של 10% לשנה ולהניח שהיא תחזור. אבל <strong>הזינוק של 2018–2026 נבע מקטליזטור ספציפי — בניית הרכבת הקלה והכרזת ההתחדשות. הקטליזטור הזה כבר מומש ומגולם במחיר. הרכבת כבר נוסעת.</strong> חזרה על 10% דורשת קטליזטור חדש, ואין כזה באופק.</div>
+  <div class="note"><strong>התאמה לטובת העסקה:</strong> בעוד 6 שנים הדירה תהיה <u>בניין חדש</u> בשכונה שרובה שיכוני 1960. סביר שהיא תתומחר <strong>מעל</strong> ממוצע השכונה, לא בדיוק בו. זה מוסיף אולי 10–15% לתרחישים שלמעלה.</div>
+  <p style="font-size:13.5px;color:var(--muted)"><strong>המסקנה:</strong> בתרחיש הריאלי (2–4% — הקצב שהשוק הישראלי מציג היום) התשואה השנתית על העסקה היא <strong>1.4%–3.2%</strong>, לפני מינוף. רק בתרחישי 6% ומעלה העסקה הופכת לאטרקטיבית — <strong>ואלה תלויים לחלוטין בכך שההתחדשות תייצר גל שני של עליות.</strong></p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">שלב 3 — ומכאן נובע שאסור להתעלם מתנאי התשלום</h3>
+  <p>ביקשת להתעלם מתנאי התשלום. <strong>אבל בנכס עתידי, לוח התשלומים <u>הוא</u> ההערכה.</strong> ההון אינו מושקע היום אלא נפרס על פני 6 שנים, וזה משנה את התמונה מקצה לקצה.</p>
+  <table>
+    <thead><tr><th>מועד</th><th>תשלום</th><th>סכום</th><th>ערך נוכחי (5%)</th></tr></thead>
+    <tbody>
+      <tr><td>חתימה</td><td>7%</td><td>₪196,420</td><td>₪196,420</td></tr>
+      <tr><td>שנה</td><td>8%</td><td>₪224,480</td><td>₪213,790</td></tr>
+      <tr><td>5 שנים 9 ח׳</td><td>25%</td><td>₪701,500</td><td>₪528,000</td></tr>
+      <tr><td>5 שנים 11 ח׳</td><td>10%</td><td>₪280,600</td><td>₪209,500</td></tr>
+      <tr style="background:rgba(74,222,128,.08)"><td colspan="3"><strong>ערך נוכחי של ההון העצמי</strong></td><td class="pg"><strong>₪1,147,710</strong></td></tr>
+      <tr><td>—</td><td>50% הלוואת קבלן</td><td>₪1,403,000</td><td class="pr">תלוי בריבית — <strong>לא ידוע</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>המסקנה המתודולוגית:</strong> הערך הנוכחי של ההון העצמי הוא כ‑<strong>₪1.15 מיליון</strong> ולא ₪2.81 מיליון. אם הלוואת הקבלן נושאת ריבית אפס או נמוכה, <strong>העסקה הופכת מיקרה לאטרקטיבית</strong> — כי נרכשת חשיפה לנכס בשווי ₪2.7 מיליון תמורת ערך נוכחי של כ‑1.15 מיליון בהון עצמי. אם הריבית היא 5–6% צמודה, היתרון נמחק כמעט כולו.</div>
+  <div class="note bad"><strong>לכן השאלה היחידה שבאמת קובעת את כדאיות העסקה היא ריבית הלוואת הקבלן — ולא המחיר למ״ר.</strong> בלעדיה לא ניתן לקבוע אם זו עסקה טובה או יקרה, וכל ציון שיינתן — כולל זה שבדוח — הוא חלקי.</div>
+</div>
+
+<h2>📍 צביון האזור</h2>
+<div class="card">
+  <h3 style="margin-top:0">מיצוב בסולם המחירים של תל אביב</h3>
+  <div class="bars">
+    <div class="brow"><span class="lbl">נווה צדק</span><div class="btrack"><div class="bfill" style="width:100%;background:#f87171"></div></div><span class="bval">₪89K</span></div>
+    <div class="brow"><span class="lbl"><strong>הדירה הנבחנת</strong></span><div class="btrack"><div class="bfill" style="width:46%;background:#38bdf8"></div></div><span class="bval">₪41.3K</span></div>
+    <div class="brow"><span class="lbl">ממוצע השכונה</span><div class="btrack"><div class="bfill" style="width:45%;background:#9aa4b2"></div></div><span class="bval">₪40.2K</span></div>
+    <div class="brow"><span class="lbl">כפר שלם</span><div class="btrack"><div class="bfill" style="width:35%;background:#4ade80"></div></div><span class="bval">₪31K</span></div>
+  </div>
+  <p style="font-size:13.5px;color:var(--muted);margin-top:10px">הפער בין השכונה היקרה לזולה ביפו ובדרום ת״א עולה על <strong>110% למ״ר</strong>. ההפרש בין נווה צדק לכפר שלם הוא ₪58,000 למ״ר, בשתי שכונות במרחק קילומטרים ספורים.</p>
+
+  <h3>הרכב האוכלוסייה בשכונה עצמה <span class="pill pg">ספציפי</span></h3>
+  <p>יפו ד׳ ויפו ג׳ (נווה גולן / גבעת התמרים) הן שכונה אחת רציפה. <strong>זו אינה שכונה ערבית.</strong> מדובר ב<strong>ריכוז הגדול ביותר בתל אביב של בתי שיכון ארוכים</strong>, שבהם מתגוררים בעיקר <strong>עולים מבוכרה וממדינות ברית המועצות</strong> שהגיעו בשנות השמונים והתשעים, רובם ממעמד סוציו‑אקונומי נמוך.</p>
+  <table>
+    <tbody>
+      <tr><td>אוכלוסייה</td><td>12,925</td></tr>
+      <tr><td>גילאי 25–34</td><td>15.6%</td></tr>
+      <tr><td>מטופלים ע״י גורמי רווחה</td><td class="pr"><strong>~30%</strong> — פי שניים מהממוצע העירוני</td></tr>
+      <tr><td>גבולות</td><td>אד קוץ׳ ושד׳ הבעש״ט מצפון · יפת ממערב · נתיבי איילון ומחרוזת מדרום</td></tr>
+      <tr><td>מצב מבנים ותשתיות</td><td class="py">מהנמוכים בעיר</td></tr>
+      <tr><td>שטחים ירוקים</td><td class="pg">שיעור גבוה יחסית של גינות</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>ההבחנה החשובה:</strong> ביפו יש שכונות עם רוב ערבי (עג׳מי, גבעת עלייה, יפו העתיקה) ושכונות עם רוב יהודי. <strong>יפו ד׳ שייכת לקבוצה השנייה</strong> — אוכלוסיית עולים יהודים ותיקה. לכן דינמיקת הג׳נטריפיקציה כאן שונה מזו שבעג׳מי, ואינה נושאת את אותו מתח קהילתי.</div>
+  <div class="note good"><strong>נתון עליית ערך אמיתי:</strong> ב‑2018 המחיר הממוצע לדירה בשכונה עמד על <strong>₪1.4 מיליון</strong>. כיום הממוצע באזור הוא <strong>₪2.98 מיליון</strong> — עלייה של כ‑113% בשמונה שנים, כ‑10% בשנה. <strong>זו ההוכחה החזקה ביותר בדוח לתזת ההתחדשות</strong> — האזור כבר הוכיח יכולת עליית ערך חריגה.</div>
+
+  <h3>מפת השכונות ביפו — מהחזקה לחלשה</h3>
+  <table>
+    <thead><tr><th>שכונה</th><th>אופי</th><th>מיצוב</th></tr></thead>
+    <tbody>
+      <tr><td><strong>יפו העתיקה · נמל יפו</strong></td><td>תיירות, אמנות, נדל״ן יוקרה. רוב ערבי היסטורי</td><td class="pg">היקרה</td></tr>
+      <tr><td><strong>שוק הפשפשים · צפון יפו</strong></td><td>ג׳נטריפיקציה בשלה, ברים, מסעדות, ביקוש חזק</td><td class="pg">גבוה מאוד</td></tr>
+      <tr><td><strong>נוגה</strong></td><td>סמוך לנווה צדק, מתחדשת במהירות</td><td class="pg">גבוה</td></tr>
+      <tr><td><strong>עג׳מי · גבעת עלייה</strong></td><td>חוף, <strong>רוב ערבי</strong>, ג׳נטריפיקציה מואצת ומתוחה</td><td class="pb">גבוה ומטפס</td></tr>
+      <tr><td><strong>צהלון · שיכוני חסכון</strong></td><td>מעורב, שיכונים, רכבת קלה</td><td class="py">בינוני</td></tr>
+      <tr style="background:rgba(56,189,248,.08)"><td><strong>יפו ג׳ · יפו ד׳ (נווה גולן)</strong></td><td><strong>שיכונים, עולי בוכרה ובריה״מ, רוב יהודי</strong></td><td class="pr"><strong>מהחלשות — כאן הנכס</strong></td></tr>
+      <tr><td><strong>כפר שלם · תל כביר</strong></td><td>מזרחית, מחוץ ליפו ההיסטורית</td><td class="pr">הזולה (₪31K/מ״ר)</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>המשמעות:</strong> הנכס נמצא באחת השכונות החלשות ביפו — <u>אבל</u> היא היחידה מבין החלשות שמשלבת <strong>880 מטר מהים, רכבת קלה על הציר, ופרויקט התחדשות של 800 יח״ד</strong>. זהו הפער בין המצב הנוכחי לפוטנציאל.</div>
+
+  <h3>מיצוב בתוך יפו</h3>
+  <p>יפו ד׳, הידועה גם כ<strong>גבעת התמרים</strong>, שוכנת בדרום יפו <strong>על גבול בת ים</strong>. היא נמנית במפורש, יחד עם נווה גולן ויפו ג׳, עם <strong>השכונות הפחות פופולריות בדרום הרובע</strong>. ברובע השביעי מתגוררים כ‑53,000 איש.</p>
+  <div class="note good"><strong>🌊 מרחק מהים — 880 מטר <span class="pill pg">נמדד</span></strong><br>
+  מדידה גאוגרפית: פינת שדרות ירושלים/הגיבורים (32.0306, 34.7508) מול חוף סי פאלאס (32.0310, 34.7415) — <strong>0.88 ק״מ בקו אווירי מערבה</strong>, כ‑10–12 דקות הליכה, כמעט באותו קו רוחב.<br>
+  זהו נכס מהותי שאינו מתומחר בממוצע השכונה: <strong>קרבה של פחות מקילומטר לים, בשילוב רכבת קלה על הציר</strong>. זהו שילוב שקיים בתל אביב במעט מאוד מקומות במחיר של ₪41,000 למ״ר.</div>
+  <div class="note bad"><strong>המשמעות:</strong> הביקוש כאן אינו ביקוש קיים אלא <strong>ביקוש עתידי ומותנה</strong>. הרכישה אינה לשכונה מבוססת — היא הימור על שינוי. הרכבת הקלה, 800 הדירות והפארק הליניארי הם הכלים שאמורים לייצר אותו, אך הוא טרם התרחש.</div>
+</div>
+
+<h2>✅ מה חזק</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">רכבת קלה פועלת <span class="pill pg">מדוד</span></h3>
+    <p>הקו האדום עובר לאורך שדרות ירושלים ומחבר את יפו לכל גוש דן. זהו ממנועי עליית הערך החזקים בישראל, והוא <strong>כבר פועל</strong> — לא הבטחה עתידית.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">התחדשות בקנה מידה</h3>
+    <p>8 בנייני רכבת ישנים ו‑208 דירות מוחלפים ב‑12 בניינים בני 9–29 קומות ו‑800 יח״ד, עם כ‑1,000 מ״ר מסחר ו‑1,670 מ״ר מבני ציבור. מתחם שלם משנה פנים.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">מיקום בתוך הפרויקט</h3>
+    <p>בלב המתחם מתוכנן <strong>פארק ליניארי</strong> בהשראת רוטשילד ובן גוריון. לפי תוכנית ההעמדה, <strong>בניין 9 יושב על הפארק</strong> — בשורה הפנימית, לא בחזית לכביש.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">מאפייני הדירה</h3>
+    <p>הדגם קיים בקומות 3–14; קומה 9 היא בשליש העליון. עלייה בקומה: <strong>₪20,000</strong>. <strong>מרפסת 13.67 מ״ר</strong> על דירה של 61.64 — 22% מהשטח הבנוי, יחס חריג לטובה. אדריכלות של בר אוריין.</p>
+  </div>
+</div>
+
+<h2>⚠️ מה מדאיג</h2>
+<div class="card">
+  <h3 style="margin-top:0">התשואה</h3>
+  <table>
+    <tbody>
+      <tr><td>מחיר הדירה</td><td>₪2,806,000</td></tr>
+      <tr><td>מס רכישה למשקיע (8%)</td><td>₪224,480</td></tr>
+      <tr><td>עו״ד ונלוות (~0.5%)</td><td>₪14,000</td></tr>
+      <tr><td><strong>עלות כוללת</strong></td><td><strong>₪3,044,480</strong></td></tr>
+      <tr><td>שכ״ד צפוי</td><td>₪7,200/חודש · ₪86,400/שנה</td></tr>
+      <tr><td>ברוטו על העלות הכוללת</td><td class="pr"><strong>2.84%</strong></td></tr>
+      <tr><td>נטו (אחרי מס 10%, ניהול, תחזוקה, ריק)</td><td class="pr"><strong>~2.2%</strong></td></tr>
+      <tr style="background:rgba(74,222,128,.07)"><td>תשואה ממוצעת מדודה בשכונה</td><td class="pg"><strong>2.28%</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="note bad">מס הרכישה של ₪224,480 נספג ביום הראשון ואינו מייצר שכירות — שקול ל‑<strong>2.6 שנות שכירות ברוטו</strong>.</div>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">אופק זמן</h3>
+    <p>אכלוס בעוד 6 שנים — ללא תזרים עד 2032, עם חשיפה לעיכובים, שינויי רגולציה ומחזור שוק. בפינוי‑בינוי עיכובים הם הכלל; <strong>ראוי לתכנן 7–8 שנים</strong>.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">שוק שטוח <span class="pill pg">מדוד</span></h3>
+    <p>מחירי הדירות בת״א עלו <strong>2% נומינלית</strong> בשנה האחרונה — <strong>אפס ריאלי</strong>. שכר הדירה עלה 3.5% ארצית ו‑3.2% בת״א. הצעת הלוואת הקבלן היא סימן מובהק לשוק מקרר.</p>
+  </div>
+</div>
+
+<h2>השורה התחתונה</h2>
+<div class="card">
+  <div class="note good"><strong>מתי העסקה נכונה:</strong> להחזקה ארוכה מאוד (10+ שנים), מתוך אמונה שיפו ד׳ תעבור טרנספורמציה, ללא צורך בתזרים, ועם יכולת לספוג 6–8 שנים ללא הכנסה. הרכבת הקלה וההתחדשות העירונית הם מנועים אמיתיים, והמחיר הוגן.</div>
+  <div class="note bad"><strong>מתי אינה נכונה:</strong> אם המטרה תשואה. 2.2% נטו הוא מהנמוכים שקיימים, השוק המקומי איטי, וצפויה הצפת היצע חריגה בדיוק במועד האכלוס.</div>
+  <h3>אותו סכום — חלופות שנבדקו</h3>
+  <div class="bars">
+    <div class="brow"><span class="lbl">יפו ד׳ (הנבחנת)</span><div class="btrack"><div class="bfill" style="width:20%;background:#f87171"></div></div><span class="bval">2.2%</span></div>
+    <div class="brow"><span class="lbl">לימסול (יד שנייה)</span><div class="btrack"><div class="bfill" style="width:42%;background:#fbbf24"></div></div><span class="bval">4.4%</span></div>
+    <div class="brow"><span class="lbl">אתונה — פלטיה אטיקיס</span><div class="btrack"><div class="bfill" style="width:65%;background:#4ade80"></div></div><span class="bval">6.8%</span></div>
+    <div class="brow"><span class="lbl">אתונה — אקסרכיה</span><div class="btrack"><div class="bfill" style="width:60%;background:#4ade80"></div></div><span class="bval">6.1%</span></div>
+  </div>
+  <p style="font-size:13.5px;color:var(--muted);margin-top:10px">תשואה נטו לאחר מס והוצאות. יפו ד׳ מפגרת פי 3 אחרי אתונה — אך היא היחידה בשקלים, ללא סיכון מטבע, ועם מנוע התחדשות עירונית ורכבת קלה.</p>
+</div>
+
+<footer>
+  ניתוח עסקה · 20 ביולי 2026<br>
+  <strong>מקורות:</strong> תוכנית הדירה וההעמדה · מדלן — שכונת צהלון ושיכוני חסכון (37 עסקאות שנסגרו, 60 מודעות פעילות, עדכון 15.7.2026) · מדלן — 95 מודעות השכרה בשדרות ירושלים · מרכז הנדל״ן ו‑Ynet על פרויקט אלמוג ואקרו · מסמכי עיריית תל אביב‑יפו על הרכב האוכלוסייה ברובע 7 · הלמ״ס למגמות מחירים ושכר דירה.<br><br>
+  <strong>הנחות:</strong> שכ״ד ₪7,200 לחודש (נגזר מממוצע שכונה ₪7,900 בהתאמה לגודל) · ערך חניה ₪200,000 ומחסן ₪60,000 (אומדני שוק, לא נתוני יזם) · תנאי התשלום לא נכללו בניתוח לפי בקשה, אך ריבית הלוואת הקבלן היא משתנה מהותי.<br><br>
+  זהו ניתוח מידע ואינו ייעוץ השקעות. נדרשת בדיקת עורך דין ושמאי.
+</footer>
+
+</div>
+</body>
+</html>
