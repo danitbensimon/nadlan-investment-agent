@@ -61,7 +61,7 @@
 
 <header>
   <h1>מחשבון ניתוח עסקת נדל״ן</h1>
-  <p class="sub">מזינים את נתוני העסקה — המחשבון בונה את הניתוח סביבם: מחיר למ״ר, תשואה, התאמה לגודל, היוון, תרחישי עתיד וציון.</p>
+  <p class="sub">מזינים את נתוני העסקה היבשים ובוחרים אזור. <strong>הסוכן מביא בעצמו את נתוני השוק</strong> — מחיר ממוצע למ״ר, שכר דירה, מיסוי ושיעורי צמיחה — ובונה סביבם ניתוח מלא: מחיר למ״ר, התאמה לגודל, תשואה, היוון, תרחישי עתיד וציון.</p>
 </header>
 
 <div class="card">
@@ -79,33 +79,31 @@
   </div>
 
   <div class="sec">
-    <h2 style="margin:0 0 10px;border:none;padding:0">2 · נתוני האזור</h2>
-    <div class="fld"><label>בחרי אזור מדוד, או "ידני" להזנה עצמאית</label>
+    <h2 style="margin:0 0 10px;border:none;padding:0">2 · איפה הנכס</h2>
+    <div class="fld"><label>בחרי אזור — הסוכן ימשוך את נתוני השוק בעצמו</label>
       <select id="preset" onchange="applyPreset()">
-        <option value="jaffa">יפו ד׳ / צהלון — ת״א (נמדד: 37 עסקאות)</option>
-        <option value="florentin">פלורנטין — ת״א (נמדד: 45 מכר, 22 שכירות)</option>
-        <option value="kipseli">קיפסלי — אתונה (נמדד: 12 מכר, 10 שכירות)</option>
-        <option value="attikis">פלטיה אטיקיס — אתונה (נמדד)</option>
+        <option value="jaffa">יפו ד׳ / צהלון — תל אביב</option>
+        <option value="florentin">פלורנטין — תל אביב</option>
+        <option value="kipseli">קיפסלי — אתונה</option>
+        <option value="attikis">פלטיה אטיקיס — אתונה</option>
         <option value="limassol">לימסול — קפריסין</option>
-        <option value="manual">ידני</option>
+        <option value="manual">אזור אחר — הזנה ידנית</option>
       </select>
     </div>
-    <div class="grid g3">
-      <div class="fld"><label>מחיר ממוצע למ״ר באזור</label><input type="number" id="mktPm" value="40200"></div>
-      <div class="fld"><label>שכר דירה למ״ר לחודש</label><input type="number" id="mktRent" value="106" step="0.1" oninput="document.getElementById('rentOverride').value=''"><div class="hint">ממוצע אזורי</div></div>
-      <div class="fld"><label>או: שכ״ד חודשי בפועל (עוקף)</label><input type="number" id="rentOverride" placeholder="למשל 7200"><div class="hint">אם יש לך מודעות השכרה של נכס דומה — עדיף</div></div>
-      <div class="fld"><label>עליית ערך שנתית צפויה %</label><input type="number" id="growth" value="3" step="0.5"><div class="hint">מדוד: ת״א 2% · אתונה 5.2% · קפריסין 10.8%</div></div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h2 style="margin:0 0 10px;border:none;padding:0">3 · עלויות ומיסוי</h2>
-    <div class="grid g4">
-      <div class="fld"><label>מס רכישה %</label><input type="number" id="tax" value="8" step="0.5"><div class="hint">ישראל משקיע 8%</div></div>
-      <div class="fld"><label>עו״ד ונלוות %</label><input type="number" id="legal" value="0.5" step="0.1"></div>
-      <div class="fld"><label>מס על שכ״ד %</label><input type="number" id="rentTax" value="10" step="1"></div>
-      <div class="fld"><label>ניהול ותחזוקה %</label><input type="number" id="mgmt" value="18" step="1"><div class="hint">כולל תקופות ריק</div></div>
-    </div>
+    <div id="areaInfo"></div>
+    <details style="margin-top:10px">
+      <summary style="cursor:pointer;color:var(--accent2);font-size:14px">⚙️ לדרוס את נתוני האזור או המיסוי (מתקדם)</summary>
+      <div class="grid g3" style="margin-top:10px">
+        <div class="fld"><label>מחיר ממוצע למ״ר</label><input type="number" id="mktPm" value="40200"></div>
+        <div class="fld"><label>שכ״ד למ״ר לחודש</label><input type="number" id="mktRent" value="106" step="0.1"></div>
+        <div class="fld"><label>עליית ערך שנתית %</label><input type="number" id="growth" value="3" step="0.5"></div>
+        <div class="fld"><label>שכ״ד חודשי בפועל (עוקף)</label><input type="number" id="rentOverride" placeholder="אם יש מודעות דומות"></div>
+        <div class="fld"><label>מס רכישה %</label><input type="number" id="tax" value="8" step="0.5"></div>
+        <div class="fld"><label>עו״ד ונלוות %</label><input type="number" id="legal" value="0.5" step="0.1"></div>
+        <div class="fld"><label>מס על שכ״ד %</label><input type="number" id="rentTax" value="10" step="1"></div>
+        <div class="fld"><label>ניהול ותחזוקה %</label><input type="number" id="mgmt" value="18" step="1"><div class="hint">כולל תקופות ריק</div></div>
+      </div>
+    </details>
   </div>
 
   <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
@@ -118,15 +116,34 @@
 
 <script>
 const PRESETS={
-  jaffa:{pm:40200,rent:106,g:3,cur:'₪',tax:8,rt:10},
-  florentin:{pm:51563,rent:121,g:2,cur:'₪',tax:8,rt:10},
-  kipseli:{pm:1655,rent:13.2,g:5.2,cur:'€',tax:3.09,rt:15},
-  attikis:{pm:1615,rent:9.6,g:5.2,cur:'€',tax:3.09,rt:15},
-  limassol:{pm:2872,rent:14.3,g:10.8,cur:'€',tax:1,rt:0}
+  jaffa:{pm:40200,rent:106,g:3,cur:'₪',tax:8,rt:10,mgmt:18,
+    name:'יפו ד׳ / צהלון ושיכוני חסכון',n:'37 עסקאות שנסגרו · 60 מודעות פעילות',
+    src:'מדלן, עדכון 15.7.2026',y:'2.28%',
+    note:'שכונה חלשה ברובע 7 · רכבת קלה על הציר · 880מ׳ מהים · צפויות ~1,200 יח״ד חדשות'},
+  florentin:{pm:51563,rent:121,g:2,cur:'₪',tax:8,rt:10,mgmt:18,
+    name:'פלורנטין, תל אביב',n:'45 מודעות מכר · 22 השכרה',
+    src:'מדלן, יולי 2026',y:'2.82%',
+    note:'ג׳נטריפיקציה בשלה · ביקוש חזק משוכרים צעירים'},
+  kipseli:{pm:1655,rent:13.2,g:5.2,cur:'€',tax:3.09,rt:15,mgmt:22,
+    name:'קיפסלי, אתונה',n:'12 מודעות מכר · 10 השכרה',
+    src:'Spitogatos, יולי 2026',y:'10.67%',
+    note:'התשואה הגבוהה מכל השווקים שנבדקו · מחירים מבוקשים (מומלץ להחיל הנחת 10%)'},
+  attikis:{pm:1615,rent:9.6,g:5.2,cur:'€',tax:3.09,rt:15,mgmt:22,
+    name:'פלטיה אטיקיס, אתונה',n:'24 מודעות מכר · 10 השכרה',
+    src:'Spitogatos, יולי 2026',y:'7.94%',
+    note:'דירות גדולות במחיר נמוך למ״ר · שכונה עובדת'},
+  limassol:{pm:2872,rent:14.3,g:10.8,cur:'€',tax:1,rt:0,mgmt:14,
+    name:'לימסול, קפריסין',n:'18 מודעות · Bazaraki',
+    src:'Bazaraki + לשכת המקרקעין, 2026',y:'~6%',
+    note:'דירות עלו 10.8% בשנה · אין מס נכס שנתי · €19,500 ראשונים פטורים ממס הכנסה'}
 };
 function applyPreset(){
   const k=document.getElementById('preset').value;
-  if(k==='manual')return;
+  const box=document.getElementById('areaInfo');
+  if(k==='manual'){
+    box.innerHTML='<div class="note">אין לסוכן נתונים מדודים לאזור זה. פתחי את ההגדרות המתקדמות והזיני מחיר ממוצע למ״ר ושכר דירה, לפי עסקאות אמיתיות שתמצאי במדלן / יד2 / פורטל מקומי.</div>';
+    return;
+  }
   const p=PRESETS[k];
   document.getElementById('mktPm').value=p.pm;
   document.getElementById('mktRent').value=p.rent;
@@ -134,6 +151,22 @@ function applyPreset(){
   document.getElementById('cur').value=p.cur;
   document.getElementById('tax').value=p.tax;
   document.getElementById('rentTax').value=p.rt;
+  document.getElementById('mgmt').value=p.mgmt;
+  box.innerHTML=`
+   <div class="card" style="background:var(--panel2);margin:10px 0 0">
+     <h3 style="margin-top:0">📊 מה הסוכן יודע על ${p.name}</h3>
+     <div class="grid g4">
+       <div class="stat"><div class="n" style="color:var(--accent)">${p.cur}${p.pm.toLocaleString()}</div><div class="l">ממוצע למ״ר</div></div>
+       <div class="stat"><div class="n" style="color:var(--accent2)">${p.cur}${p.rent}</div><div class="l">שכ״ד למ״ר לחודש</div></div>
+       <div class="stat"><div class="n" style="color:var(--warn)">${p.y}</div><div class="l">תשואה באזור</div></div>
+       <div class="stat"><div class="n" style="color:var(--accent2)">${p.g}%</div><div class="l">עליית ערך שנתית</div></div>
+     </div>
+     <p style="font-size:13px;color:var(--muted);margin:10px 0 0">
+       <strong>מדגם:</strong> ${p.n} · <strong>מקור:</strong> ${p.src}<br>
+       <strong>הקשר:</strong> ${p.note}<br>
+       גם מס הרכישה, המס על שכר הדירה ועלויות הניהול הותאמו אוטומטית למדינה.
+     </p>
+   </div>`;
 }
 const V=id=>parseFloat(document.getElementById(id).value)||0;
 const fmt=(n,c)=>c+Math.round(n).toLocaleString();
@@ -313,6 +346,7 @@ function calc(){
   </div>`;
   document.getElementById('out').scrollIntoView({behavior:'smooth',block:'start'});
 }
+applyPreset();
 calc();
 </script>
 </div>
