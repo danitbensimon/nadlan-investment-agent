@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מחשבון ניתוח עסקת נדל״ן</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;
+    --txt:#e8ebf0;--muted:#9aa4b2;--accent:#4ade80;--accent2:#38bdf8;
+    --warn:#fbbf24;--danger:#f87171;--r:14px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",Arial,sans-serif;line-height:1.7;font-size:16px}
+  .wrap{max-width:1150px;margin:0 auto;padding:26px 18px 70px}
+  header{background:linear-gradient(135deg,#1a2233,#0f1115 65%);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;margin-bottom:20px}
+  h1{margin:0 0 6px;font-size:26px}
+  .sub{color:var(--muted);font-size:15px}
+  h2{font-size:19px;margin:26px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:16px 0 7px;color:var(--accent2)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:12px 0}
+  .grid{display:grid;gap:12px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:880px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  label{display:block;font-size:13.5px;color:var(--muted);margin-bottom:3px}
+  input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+    border-radius:9px;padding:9px 11px;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--accent2)}
+  .fld{margin-bottom:11px}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px;text-align:center}
+  .stat .n{font-size:23px;font-weight:700}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:5px}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+  th{background:var(--panel2);color:var(--accent2);font-weight:600}
+  .note{border-right:3px solid var(--warn);background:rgba(251,191,36,.06);padding:10px 14px;border-radius:8px;font-size:14px;margin:10px 0}
+  .bad{border-right-color:var(--danger);background:rgba(248,113,113,.07)}
+  .good{border-right-color:var(--accent);background:rgba(74,222,128,.07)}
+  .bars{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .brow{display:grid;grid-template-columns:160px 1fr 74px;align-items:center;gap:9px;font-size:13px}
+  .btrack{background:var(--panel2);border-radius:6px;height:20px;overflow:hidden}
+  .bfill{height:100%}
+  .lbl{color:var(--muted);text-align:right}
+  .bval{font-weight:700;text-align:left}
+  .ring{width:140px;height:140px;flex:0 0 140px}
+  .score{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .scorerow{display:grid;grid-template-columns:170px 1fr 38px;gap:9px;align-items:center;font-size:13.5px;margin:5px 0}
+  button{background:var(--accent2);color:#06121b;border:none;border-radius:10px;padding:11px 22px;
+    font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+  button:hover{opacity:.9}
+  .btn2{background:var(--panel2);color:var(--txt);border:1px solid var(--line)}
+  .pill{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:6px;font-weight:600;margin-right:4px}
+  .pg{background:rgba(74,222,128,.15);color:var(--accent)}
+  .py{background:rgba(251,191,36,.15);color:var(--warn)}
+  .pr{background:rgba(248,113,113,.15);color:var(--danger)}
+  .hint{font-size:12px;color:var(--muted);margin-top:2px}
+  #out{display:none}
+  .sec{border-top:1px solid var(--line);margin-top:16px;padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>מחשבון ניתוח עסקת נדל״ן</h1>
+  <p class="sub">מזינים את נתוני העסקה — המחשבון בונה את הניתוח סביבם: מחיר למ״ר, תשואה, התאמה לגודל, היוון, תרחישי עתיד וציון.</p>
+</header>
+
+<div class="card">
+  <h2 style="margin-top:0;border:none;padding:0">1 · נתוני העסקה</h2>
+  <div class="grid g3">
+    <div class="fld"><label>מחיר הנכס</label><input type="number" id="price" value="2806000"><div class="hint">כולל חניה ומחסן אם יש</div></div>
+    <div class="fld"><label>שטח בנוי (מ״ר)</label><input type="number" id="sqm" value="61.64" step="0.01"></div>
+    <div class="fld"><label>מרפסת (מ״ר)</label><input type="number" id="balcony" value="13.67" step="0.01"></div>
+    <div class="fld"><label>מספר חדרים</label><input type="number" id="rooms" value="2.5" step="0.5"></div>
+    <div class="fld"><label>קומה</label><input type="number" id="floor" value="9"></div>
+    <div class="fld"><label>שנים עד מסירה</label><input type="number" id="years" value="6" step="0.5"><div class="hint">0 = נכס מוכן</div></div>
+    <div class="fld"><label>ערך חניה</label><input type="number" id="parking" value="200000"><div class="hint">0 אם לא כלולה</div></div>
+    <div class="fld"><label>ערך מחסן</label><input type="number" id="storage" value="60000"></div>
+    <div class="fld"><label>מטבע</label><select id="cur"><option value="₪">₪ שקל</option><option value="€">€ אירו</option></select></div>
+  </div>
+
+  <div class="sec">
+    <h2 style="margin:0 0 10px;border:none;padding:0">2 · נתוני האזור</h2>
+    <div class="fld"><label>בחרי אזור מדוד, או "ידני" להזנה עצמאית</label>
+      <select id="preset" onchange="applyPreset()">
+        <option value="jaffa">יפו ד׳ / צהלון — ת״א (נמדד: 37 עסקאות)</option>
+        <option value="florentin">פלורנטין — ת״א (נמדד: 45 מכר, 22 שכירות)</option>
+        <option value="kipseli">קיפסלי — אתונה (נמדד: 12 מכר, 10 שכירות)</option>
+        <option value="attikis">פלטיה אטיקיס — אתונה (נמדד)</option>
+        <option value="limassol">לימסול — קפריסין</option>
+        <option value="manual">ידני</option>
+      </select>
+    </div>
+    <div class="grid g3">
+      <div class="fld"><label>מחיר ממוצע למ״ר באזור</label><input type="number" id="mktPm" value="40200"></div>
+      <div class="fld"><label>שכר דירה למ״ר לחודש</label><input type="number" id="mktRent" value="106" step="0.1"></div>
+      <div class="fld"><label>עליית ערך שנתית צפויה %</label><input type="number" id="growth" value="3" step="0.5"><div class="hint">מדוד: ת״א 2% · אתונה 5.2% · קפריסין 10.8%</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2 style="margin:0 0 10px;border:none;padding:0">3 · עלויות ומיסוי</h2>
+    <div class="grid g4">
+      <div class="fld"><label>מס רכישה %</label><input type="number" id="tax" value="8" step="0.5"><div class="hint">ישראל משקיע 8%</div></div>
+      <div class="fld"><label>עו״ד ונלוות %</label><input type="number" id="legal" value="0.5" step="0.1"></div>
+      <div class="fld"><label>מס על שכ״ד %</label><input type="number" id="rentTax" value="10" step="1"></div>
+      <div class="fld"><label>ניהול ותחזוקה %</label><input type="number" id="mgmt" value="18" step="1"><div class="hint">כולל תקופות ריק</div></div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+    <button onclick="calc()">חשב ניתוח</button>
+    <button class="btn2" onclick="window.print()">הדפס / שמור PDF</button>
+  </div>
+</div>
+
+<div id="out"></div>
+
+<script>
+const PRESETS={
+  jaffa:{pm:40200,rent:106,g:3,cur:'₪',tax:8,rt:10},
+  florentin:{pm:51563,rent:121,g:2,cur:'₪',tax:8,rt:10},
+  kipseli:{pm:1655,rent:13.2,g:5.2,cur:'€',tax:3.09,rt:15},
+  attikis:{pm:1615,rent:9.6,g:5.2,cur:'€',tax:3.09,rt:15},
+  limassol:{pm:2872,rent:14.3,g:10.8,cur:'€',tax:1,rt:0}
+};
+function applyPreset(){
+  const k=document.getElementById('preset').value;
+  if(k==='manual')return;
+  const p=PRESETS[k];
+  document.getElementById('mktPm').value=p.pm;
+  document.getElementById('mktRent').value=p.rent;
+  document.getElementById('growth').value=p.g;
+  document.getElementById('cur').value=p.cur;
+  document.getElementById('tax').value=p.tax;
+  document.getElementById('rentTax').value=p.rt;
+}
+const V=id=>parseFloat(document.getElementById(id).value)||0;
+const fmt=(n,c)=>c+Math.round(n).toLocaleString();
+const pct=n=>n.toFixed(2)+'%';
+
+function scoreBar(label,val,color){
+  return `<div class="scorerow"><span class="lbl">${label}</span><div class="btrack"><div class="bfill" style="width:${val}%;background:${color}"></div></div><span class="bval">${val}</span></div>`;
+}
+function col(v,good,bad){return v>=good?'#4ade80':v>=bad?'#fbbf24':'#f87171';}
+
+function calc(){
+  const c=document.getElementById('cur').value;
+  const price=V('price'),sqm=V('sqm'),bal=V('balcony'),rooms=V('rooms'),floor=V('floor');
+  const years=V('years'),park=V('parking'),stor=V('storage');
+  const mktPm=V('mktPm'),mktRent=V('mktRent'),growth=V('growth')/100;
+  const tax=V('tax')/100,legal=V('legal')/100,rentTax=V('rentTax')/100,mgmt=V('mgmt')/100;
+
+  // מחיר למ״ר
+  const pmFull=price/sqm;
+  const pmNet=(price-park-stor)/sqm;
+  const pmTotal=price/(sqm+bal);
+
+  // עלות אמיתית
+  const taxAmt=price*tax, legalAmt=price*legal;
+  const totalCost=price+taxAmt+legalAmt;
+
+  // שכירות ותשואה
+  const rentMo=sqm*mktRent, rentYr=rentMo*12;
+  const grossOnPrice=rentYr/price*100;
+  const grossOnCost=rentYr/totalCost*100;
+  const netRent=rentYr*(1-rentTax)*(1-mgmt);
+  const netYield=netRent/totalCost*100;
+
+  // התאמת גודל — עקומה אמפירית: מחיר למ״ר יורד עם הגודל
+  // נקודת ייחוס: הממוצע באזור מייצג דירה טיפוסית של 75 מ״ר
+  const REF=75, SLOPE=0.004; // 0.4% לכל מ״ר סטייה
+  const sizeAdj=mktPm*(1+(REF-sqm)*SLOPE);
+  const vsAdj=(pmNet-sizeAdj)/sizeAdj*100;
+  const vsMkt=(pmNet-mktPm)/mktPm*100;
+
+  // ערך זמן
+  const foregone=rentYr*years;
+  const readyValue=sqm*mktPm+park+stor;
+  const vsReady=(price-readyValue)/readyValue*100;
+
+  // תרחישי עתיד
+  const scen=[2,4,6,10].map(g=>{
+    const fpm=mktPm*Math.pow(1+g/100,years);
+    const fval=sqm*fpm+park+stor;
+    const tot=(fval-price)/price*100;
+    const ann=years>0?(Math.pow(fval/price,1/years)-1)*100:0;
+    return {g,fpm,fval,tot,ann};
+  });
+  const fvNow=sqm*mktPm*Math.pow(1+growth,years)+park+stor;
+  const pv5=fvNow/Math.pow(1.05,years), pv7=fvNow/Math.pow(1.07,years);
+
+  // ציון
+  const sPrice = vsAdj<=-10?90 : vsAdj<=-3?78 : vsAdj<=3?65 : vsAdj<=10?45 : 25;
+  const sYield = netYield>=6?92 : netYield>=4.5?75 : netYield>=3?50 : netYield>=2?30 : 18;
+  const sTime  = years<=0?95 : years<=2?75 : years<=4?50 : years<=6?28 : 15;
+  const sGrowth= growth>=.08?88 : growth>=.05?70 : growth>=.03?52 : growth>=.02?38 : 25;
+  const total=Math.round(sPrice*.3+sYield*.3+sTime*.2+sGrowth*.2);
+  const ringCol=total>=70?'#4ade80':total>=55?'#fbbf24':'#f87171';
+  const dash=314-(314*total/100);
+
+  let verdict, vClass;
+  if(total>=72){verdict='עסקה טובה — התמחור, התשואה והאופק מסתדרים יחד.';vClass='good';}
+  else if(total>=58){verdict='עסקה בינונית‑פלוס — יש בה היגיון, אך היא נשענת על הנחות עתידיות ולא על תזרים.';vClass='';}
+  else if(total>=45){verdict='עסקה בינונית — התמחור סביר אך אחד או יותר מהפרמטרים חלשים משמעותית.';vClass='';}
+  else {verdict='עסקה חלשה — הנתונים אינם תומכים ברכישה במחיר זה.';vClass='bad';}
+
+  document.getElementById('out').style.display='block';
+  document.getElementById('out').innerHTML=`
+  <div class="card">
+    <h2 style="margin-top:0;border:none;padding:0">הציון</h2>
+    <div class="score">
+      <svg class="ring" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#2a2f3a" stroke-width="13"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="${ringCol}" stroke-width="13"
+          stroke-dasharray="314" stroke-dashoffset="${dash}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        <text x="60" y="58" font-size="32" fill="${ringCol}" text-anchor="middle" font-weight="bold">${total}</text>
+        <text x="60" y="77" font-size="12" fill="#9aa4b2" text-anchor="middle">מתוך 100</text>
+      </svg>
+      <div style="flex:1;min-width:280px">
+        ${scoreBar('מחיר מול השוק',sPrice,col(sPrice,70,45))}
+        ${scoreBar('תשואת שכירות',sYield,col(sYield,70,45))}
+        ${scoreBar('אופק זמן',sTime,col(sTime,70,45))}
+        ${scoreBar('פוטנציאל צמיחה',sGrowth,col(sGrowth,70,45))}
+      </div>
+    </div>
+    <div class="note ${vClass}"><strong>${total} מתוך 100.</strong> ${verdict}</div>
+  </div>
+
+  <h2>מחיר למ״ר</h2>
+  <div class="grid g4">
+    <div class="stat"><div class="n" style="color:var(--accent2)">${fmt(pmFull,c)}</div><div class="l">מחיר מלא ÷ שטח בנוי</div></div>
+    <div class="stat"><div class="n" style="color:var(--accent)">${fmt(pmNet,c)}</div><div class="l">בניכוי חניה ומחסן<br><strong>← להשוואה</strong></div></div>
+    <div class="stat"><div class="n" style="color:var(--muted)">${fmt(pmTotal,c)}</div><div class="l">כולל מרפסת</div></div>
+    <div class="stat"><div class="n" style="color:${vsMkt<=0?'var(--accent)':'var(--danger)'}">${vsMkt>0?'+':''}${vsMkt.toFixed(1)}%</div><div class="l">מול ממוצע האזור</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">התאמה לגודל</h3>
+    <p style="font-size:14px;color:var(--muted)">דירות קטנות נמכרות ביוקר יותר למ״ר. המחשבון מתאים את ממוצע האזור לגודל הדירה שהוזנה.</p>
+    <table><tbody>
+      <tr><td>ממוצע האזור (דירה טיפוסית ${REF} מ״ר)</td><td>${fmt(mktPm,c)}</td></tr>
+      <tr><td>שווי הוגן מותאם ל‑${sqm} מ״ר</td><td><strong>${fmt(sizeAdj,c)}</strong></td></tr>
+      <tr><td>המחיר בפועל (בניכוי חניה ומחסן)</td><td><strong>${fmt(pmNet,c)}</strong></td></tr>
+      <tr style="background:${vsAdj<=0?'rgba(74,222,128,.08)':'rgba(248,113,113,.08)'}"><td><strong>פער מהשווי המותאם</strong></td>
+        <td><strong style="color:${vsAdj<=0?'var(--accent)':'var(--danger)'}">${vsAdj>0?'+':''}${vsAdj.toFixed(1)}%</strong></td></tr>
+    </tbody></table>
+  </div>
+
+  <h2>תשואה</h2>
+  <div class="card">
+    <table><tbody>
+      <tr><td>מחיר הנכס</td><td>${fmt(price,c)}</td></tr>
+      <tr><td>מס רכישה ${(tax*100).toFixed(1)}%</td><td>${fmt(taxAmt,c)}</td></tr>
+      <tr><td>עו״ד ונלוות</td><td>${fmt(legalAmt,c)}</td></tr>
+      <tr style="background:rgba(56,189,248,.07)"><td><strong>עלות כוללת</strong></td><td><strong>${fmt(totalCost,c)}</strong></td></tr>
+      <tr><td>שכ״ד צפוי (${sqm} × ${mktRent})</td><td>${fmt(rentMo,c)} לחודש · ${fmt(rentYr,c)} לשנה</td></tr>
+      <tr><td>ברוטו על המחיר</td><td>${pct(grossOnPrice)}</td></tr>
+      <tr><td>ברוטו על העלות הכוללת</td><td>${pct(grossOnCost)}</td></tr>
+      <tr style="background:${netYield>=4?'rgba(74,222,128,.08)':'rgba(248,113,113,.08)'}"><td><strong>תשואה נטו</strong></td>
+        <td><strong style="color:${netYield>=4?'var(--accent)':'var(--danger)'}">${pct(netYield)}</strong></td></tr>
+    </tbody></table>
+  </div>
+
+  ${years>0?`
+  <h2>ערך זמן — הנכס מתקבל בעוד ${years} שנים</h2>
+  <div class="card">
+    <table><tbody>
+      <tr><td>שווי נכס זהה <strong>מוכן היום</strong></td><td>${fmt(readyValue,c)}</td></tr>
+      <tr><td>המחיר המבוקש</td><td>${fmt(price,c)}</td></tr>
+      <tr style="background:${vsReady<=0?'rgba(74,222,128,.08)':'rgba(251,191,36,.08)'}"><td><strong>פער מול נכס מוכן</strong></td>
+        <td><strong>${vsReady>0?'+':''}${vsReady.toFixed(1)}%</strong></td></tr>
+      <tr><td>שכירות שלא תתקבל ב‑${years} שנים</td><td class="pr"><strong>${fmt(foregone,c)}</strong></td></tr>
+      <tr><td>ערך נוכחי של הנכס (היוון 5%)</td><td>${fmt(pv5,c)}</td></tr>
+      <tr><td>ערך נוכחי (היוון 7%)</td><td>${fmt(pv7,c)}</td></tr>
+    </tbody></table>
+    <div class="note ${price>pv7?'bad':'good'}">בהיוון של 7% ובהנחת צמיחה של ${(growth*100).toFixed(1)}%, השווי הנוכחי המוצדק הוא <strong>${fmt(pv7,c)}</strong> מול מחיר מבוקש של <strong>${fmt(price,c)}</strong>.</div>
+  </div>
+
+  <h2>תרחישי עתיד</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>צמיחה שנתית</th><th>מ״ר בעוד ${years} שנים</th><th>שווי הנכס</th><th>רווח כולל</th><th>תשואה שנתית</th></tr></thead>
+      <tbody>
+      ${scen.map(s=>`<tr><td><strong>${s.g}%</strong></td><td>${fmt(s.fpm,c)}</td><td>${fmt(s.fval,c)}</td>
+        <td style="color:${s.tot>0?'var(--accent)':'var(--danger)'}">${s.tot>0?'+':''}${s.tot.toFixed(0)}%</td>
+        <td><strong>${s.ann.toFixed(1)}%</strong></td></tr>`).join('')}
+      </tbody>
+    </table>
+    <div class="note">תשואה שנתית = רווח ההון בלבד, ללא שכירות (שאינה מתקבלת בתקופת ההמתנה). זהו הרכיב שמכריע בעסקאות על הנייר.</div>
+  </div>`:''}
+
+  <div class="card">
+    <h3 style="margin-top:0">סיכום</h3>
+    <p>נכס של <strong>${sqm} מ״ר</strong>${bal>0?` + ${bal} מ״ר מרפסת`:''}, ${rooms} חדרים${floor?`, קומה ${floor}`:''}, במחיר <strong>${fmt(price,c)}</strong>.</p>
+    <p>המחיר למ״ר בניכוי חניה ומחסן הוא <strong>${fmt(pmNet,c)}</strong>, שהם <strong>${vsAdj>0?'+':''}${vsAdj.toFixed(1)}%</strong> מהשווי ההוגן המותאם לגודל באזור.
+    התשואה נטו הצפויה היא <strong>${pct(netYield)}</strong>.</p>
+    ${years>0?`<p>הנכס מתקבל בעוד ${years} שנים, ולכן ${fmt(foregone,c)} של שכירות לא יתקבלו בתקופה זו. בתרחיש הצמיחה שהוזן (${(growth*100).toFixed(1)}%) התשואה השנתית מרווח הון תהיה <strong>${scen.find(s=>Math.abs(s.g-growth*100)<1.5)?scen.find(s=>Math.abs(s.g-growth*100)<1.5).ann.toFixed(1):((Math.pow(fvNow/price,1/years)-1)*100).toFixed(1)}%</strong>.</p>`:''}
+    <div class="note ${vClass}">${verdict}</div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">מגבלות הכלי</h3>
+    <p style="font-size:13.5px;color:var(--muted)">
+    הבנצ׳מרקים המוגדרים מראש נמדדו ממודעות ועסקאות אמיתיות, אך במדגמים קטנים (10–45 לאזור) — מספיק לכיוון, לא להחלטת רכישה.
+    עקומת התאמת הגודל היא קירוב לינארי. שכר הדירה מחושב מממוצע אזורי ולא ממודעות של הנכס עצמו.
+    הכלי אינו בודק זכויות משפטיות, מצב פיזי, דירוג אנרגטי, היתרי בנייה, או תנאי מימון — כל אלה יכולים לשנות את התמונה מהותית.
+    זהו כלי מידע ואינו ייעוץ השקעות.</p>
+  </div>`;
+  document.getElementById('out').scrollIntoView({behavior:'smooth',block:'start'});
+}
+calc();
+</script>
+</div>
+</body>
+</html>
