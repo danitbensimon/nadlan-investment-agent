@@ -43,9 +43,9 @@
   .prow>summary{list-style:none}
   .prow>summary::-webkit-details-marker{display:none}
   .prow>summary::marker{content:""}
-  .rowhead,.prow>summary{display:grid;grid-template-columns:2.1fr .9fr .5fr .8fr .9fr .7fr .7fr;gap:8px;align-items:center;padding:11px 12px;font-size:13.5px}
-  .six .rowhead,.six .prow>summary{grid-template-columns:2.1fr 1fr .5fr .9fr .8fr .8fr}
-  @media(max-width:860px){.six .rowhead,.six .prow>summary{grid-template-columns:1.6fr 1fr .8fr}}
+  .rowhead,.prow>summary{display:grid;grid-template-columns:16px 2.1fr .9fr .5fr .8fr .9fr .7fr .7fr;gap:8px;align-items:center;padding:11px 12px;font-size:13.5px}
+  .six .rowhead,.six .prow>summary{grid-template-columns:16px 2.1fr 1fr .5fr .9fr .8fr .8fr}
+  @media(max-width:860px){.six .rowhead,.six .prow>summary{grid-template-columns:16px 1.6fr 1fr .8fr}}
   .rowhead{background:var(--panel2);color:var(--accent2);font-weight:600;border-radius:8px 8px 0 0}
   .prow{border-bottom:1px solid var(--line);background:var(--panel)}
   .prow>summary{cursor:pointer;list-style:none}
@@ -58,8 +58,8 @@
   .calc .line{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line);gap:12px}
   .calc .line:last-child{border-bottom:none}
   .calc .tot{font-weight:700;color:var(--accent);border-top:2px solid var(--line);margin-top:6px;padding-top:8px}
-  @media(max-width:860px){.rowhead,.prow>summary{grid-template-columns:1.6fr 1fr .8fr;font-size:12px}
-    .rowhead span:nth-child(n+4),.prow>summary span:nth-child(n+4){display:none}}
+  @media(max-width:860px){.rowhead,.prow>summary{grid-template-columns:16px 1.6fr 1fr .8fr;font-size:12px}
+    .rowhead span:nth-child(n+5),.prow>summary span:nth-child(n+5){display:none}}
   footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
 </style>
 </head>
@@ -91,7 +91,7 @@
 <h2>2 · המועמדים שעומדים בכל התנאים</h2>
 <p class="lead" style="font-size:14.5px">מתוך 517 מודעות שנסרקו בלרנקה ופאפוס, רק <strong>9 באזורים העומדים ב‑10 דקות</strong> — ומתוכן <strong>2 בלבד יד שנייה</strong>. לכל שורה מוצגים <strong>שני המסלולים</strong> — שכירות ארוכה ו‑Airbnb — והמסלול המנצח מסומן.</p>
 <div class="card" style="padding:0;overflow:hidden">
-  <div class="rowhead"><span>נכס</span><span>מחיר</span><span>מ״ר</span><span>€/מ״ר</span><span>מצב</span><span>תשואה ברוטו</span><span>תשואה נטו</span></div>
+  <div class="rowhead"><span></span><span>נכס</span><span>מחיר</span><span>מ״ר</span><span>€/מ״ר</span><span>מצב</span><span>תשואה ברוטו</span><span>תשואה נטו</span></div>
 
   <details class="prow" open><summary>
     <span><strong>גרוסקיפו — פאפוס</strong><br><small style="color:var(--muted)">2 חד׳ · ~8 דק׳ מהשדה</small></span>
@@ -207,7 +207,7 @@
 <h2>4 · הרשימה המלאה — כל 18 הנכסים שעברו סינון</h2>
 <p class="lead" style="font-size:14.5px">מתוך 1,400 שנסרקו: 10 דירות ו‑47 בתים עמדו באילוץ המרחק. להלן <strong>כל אלה שעברו גם סף תשואה של 3%</strong>, ממוינים מהגבוה לנמוך. ✅ = יד שנייה ללא מע״מ.</p>
 <div class="card six" style="padding:0;overflow:hidden">
-<div class="rowhead"><span>נכס</span><span>מחיר מבוקש</span><span>מ״ר</span><span>מצב</span><span>תשואה ברוטו</span><span>תשואה נטו</span></div>
+<div class="rowhead"><span></span><span>נכס</span><span>מחיר מבוקש</span><span>מ״ר</span><span>מצב</span><span>תשואה ברוטו</span><span>תשואה נטו</span></div>
   <details class="prow" style="background:rgba(74,222,128,.06)"><summary>
     <span><strong>1. גרוסקיפו</strong><br><small style="color:var(--muted)">דירה · 8 דק׳ מהשדה</small></span>
     <span>€205,000</span><span>100</span><span><span class="pg">יד שנייה</span></span>
