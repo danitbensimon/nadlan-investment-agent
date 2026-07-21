@@ -40,6 +40,9 @@
   .pg{background:rgba(74,222,128,.15);color:var(--accent)}
   .py{background:rgba(251,191,36,.15);color:var(--warn)}
   .pr{background:rgba(248,113,113,.15);color:var(--danger)}
+  .prow>summary{list-style:none}
+  .prow>summary::-webkit-details-marker{display:none}
+  .prow>summary::marker{content:""}
   .rowhead,.prow>summary{display:grid;grid-template-columns:2.1fr .9fr .5fr .8fr .9fr .7fr .7fr;gap:8px;align-items:center;padding:11px 12px;font-size:13.5px}
   .six .rowhead,.six .prow>summary{grid-template-columns:2.1fr 1fr .5fr .9fr .8fr .8fr}
   @media(max-width:860px){.six .rowhead,.six .prow>summary{grid-template-columns:1.6fr 1fr .8fr}}
